@@ -104,3 +104,4 @@ void DirErrorDlg(std::string_view error)
 }
 
 } // namespace devilution
+
