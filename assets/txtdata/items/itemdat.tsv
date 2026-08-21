@@ -68,7 +68,7 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	1	Armor	Armor	SPLINT_MAIL	MediumArmor	NONE	Splint Mail	Mail	17	65	0	0	30	35	40	0	0		NONE	Null	false	3250
 	1	Armor	Armor	FIELD_PLATE	HeavyArmor	PLATEMAIL	Plate Mail	Plate	19	75	0	0	42	50	60	0	0		NONE	Null	false	4600
 	1	Armor	Armor	FIELD_PLATE	HeavyArmor	NONE	Field Plate	Plate	21	80	0	0	40	45	65	0	0		NONE	Null	false	5800
-	1	Armor	Armor	GOTHIC_PLATE	HeavyArmor	NONE	Gothic Plate	Plate	23	100	0	0	50	60	80	0	0		NONE	Null	false	8000
+	1	Armor	Armor	GOTHIC_PLATE	HeavyArmor	GothicPlate	Gothic Plate	Plate	23	100	0	0	50	60	80	0	0		NONE	Null	false	8000
 	1	Armor	Armor	FULL_PLATE_MAIL	HeavyArmor	FULLPLATE	Full Plate Mail	Plate	25	90	0	0	60	75	90	0	0		NONE	Null	false	6500
 	1	Armor	One-handed	BUCKLER	Shield	BUCKLER	Buckler	Shield	1	16	0	0	1	5	0	0	0		NONE	Null	false	30
 	1	Armor	One-handed	SMALL_SHIELD	Shield	SMALLSHIELD	Small Shield	Shield	5	24	0	0	3	8	25	0	0		NONE	Null	false	90
