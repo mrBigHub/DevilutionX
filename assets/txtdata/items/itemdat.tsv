@@ -1,5 +1,5 @@
 id	dropRate	class	equipType	cursorGraphic	itemType	uniqueBaseItem	name	shortName	minMonsterLevel	durability	minDamage	maxDamage	minArmor	maxArmor	minStrength	minMagic	minDexterity	specialEffects	miscId	spell	usable	value
-IDI_GOLD	1	Gold	Unequippable	GOLD_SMALL	Gold	NONE	Gold		1	0	0	0	0	0	0	0	0		NONE	Null	TRUE	0
+IDI_GOLD	1	Gold	Unequippable	GOLD_SMALL	Gold	NONE	Gold		1	0	0	0	0	0	0	0	0		NONE	Null	FALSE	0
 IDI_WARRIOR	0	Weapon	One-handed	SHORT_SWORD	Sword	NONE	Short Sword		2	24	2	6	0	0	18	0	0		NONE	Null	FALSE	120
 IDI_WARRSHLD	0	Armor	One-handed	BUCKLER	Shield	NONE	Buckler		2	16	0	0	3	3	0	0	0		NONE	Null	FALSE	30
 IDI_WARRCLUB	0	Weapon	One-handed	CLUB	Mace	SPIKCLUB	Club		1	20	1	6	0	0	0	0	0		NONE	Null	FALSE	20
