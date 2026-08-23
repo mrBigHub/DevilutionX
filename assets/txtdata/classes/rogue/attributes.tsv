@@ -4,7 +4,7 @@ baseStr	20
 baseMag	15
 baseDex	30
 baseVit	20
-maxStr	55
+maxStr	60
 maxMag	70
 maxDex	250
 maxVit	80
@@ -20,3 +20,4 @@ itmMana	1.5
 baseMagicToHit	50
 baseMeleeToHit	50
 baseRangedToHit	70
+classFlags	DualWield
