@@ -1,10 +1,10 @@
 Variable	Value
-skill	Rage
+skill	Infravision
 spell	Null
 spellLevel	0
-item0	IDI_WARRIOR
-item1	IDI_WARRSHLD
-item2	IDI_WARRCLUB
-item3	IDI_HEAL
-item4	IDI_HEAL
+item0	IDI_ROGUE
+item1	IDI_HEAL
+item2	IDI_HEAL
+item3	IDI_NONE
+item4	IDI_NONE
 gold	100
