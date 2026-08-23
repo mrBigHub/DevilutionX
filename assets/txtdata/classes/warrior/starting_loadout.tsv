@@ -1,10 +1,10 @@
 Variable	Value
-skill	ItemRepair
+skill	Rage
 spell	Null
 spellLevel	0
-item0	IDI_WARRIOR
-item1	IDI_WARRSHLD
-item2	IDI_WARRCLUB
+item0	The GrandBrother
+item1	The Deflector
+item2	GotTheDangerThing
 item3	IDI_HEAL
 item4	IDI_HEAL
 gold	100
