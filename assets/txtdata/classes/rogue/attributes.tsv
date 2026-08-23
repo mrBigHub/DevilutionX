@@ -1,5 +1,5 @@
 Attribute	Value
-classFlags	TrapSense
+classFlags	DualWield
 baseStr	20
 baseMag	15
 baseDex	30
@@ -20,4 +20,3 @@ itmMana	1.5
 baseMagicToHit	50
 baseMeleeToHit	50
 baseRangedToHit	70
-classFlags	DualWield

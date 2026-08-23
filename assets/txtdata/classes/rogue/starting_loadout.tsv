@@ -1,8 +1,8 @@
 Variable	Value
-skill	TrapDisarm
+skill	Infravision
 spell	Null
 spellLevel	0
-item0	IDI_ROGUE
+item0	ShootingStar 
 item1	IDI_HEAL
 item2	IDI_HEAL
 item3	IDI_NONE
