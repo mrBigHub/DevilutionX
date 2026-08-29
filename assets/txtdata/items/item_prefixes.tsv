@@ -10,7 +10,7 @@ Platinum	TOHIT	31	40	16	Weapon,Bow	Good	2	true	3100	4000	11
 Mithril	TOHIT	41	60	20	Weapon,Bow	Good	2	true	4100	6000	13
 Meteoric	TOHIT	61	80	23	Weapon,Bow	Any	2	true	6100	10000	15
 Weird	TOHIT	81	100	30	Weapon,Bow	Any	2	true	10100	14000	17
-Strange	TOHIT	101	150	40	Weapon,Bow	Any	2	true	14100	20000	20
+Strange	TOHIT	101	150	35	Weapon,Bow	Any	2	true	14100	20000	20
 Useless	DAMP_CURSE	100	100	5	Weapon,Bow	Any	2	false	0	0	-8
 Bent	DAMP_CURSE	50	75	3	Weapon,Bow	Any	2	false	0	0	-4
 Weak	DAMP_CURSE	25	45	1	Weapon,Bow	Any	2	false	0	0	-3
@@ -22,7 +22,7 @@ Brutal	DAMP	81	95	16	Weapon,Bow	Any	2	true	1500	1950	10
 Massive	DAMP	96	110	20	Weapon,Bow	Any	2	true	2000	2450	13
 Savage	DAMP	111	125	23	Weapon,Bow	Any	2	true	2500	3000	15
 Ruthless	DAMP	126	150	30	Weapon,Bow	Any	2	true	10100	15000	17
-Merciless	DAMP	151	175	40	Weapon,Bow	Any	2	true	15000	20000	20
+Merciless	DAMP	151	175	35	Weapon,Bow	Any	2	true	15000	20000	20
 Clumsy	TOHIT_DAMP_CURSE	50	75	5	Weapon,Staff,Bow	Any	2	false	0	0	-7
 Dull	TOHIT_DAMP_CURSE	25	45	1	Weapon,Staff,Bow	Any	2	false	0	0	-5
 Sharp	TOHIT_DAMP	20	35	1	Weapon,Staff,Bow	Any	2	false	350	950	5
@@ -33,7 +33,7 @@ Lord's	TOHIT_DAMP	81	95	19	Weapon,Staff	Any	2	true	4100	5950	21
 Knight's	TOHIT_DAMP	96	110	23	Weapon,Staff	Any	2	true	6100	8450	26
 Master's	TOHIT_DAMP	111	125	28	Weapon,Staff	Any	2	true	8600	13000	30
 Champion's	TOHIT_DAMP	126	150	30	Weapon,Staff	Any	2	true	15200	24000	33
-King's	TOHIT_DAMP	151	175	40	Weapon,Staff	Any	2	true	24100	35000	38
+King's	TOHIT_DAMP	151	175	35	Weapon,Staff	Any	2	true	24100	35000	38
 Vulnerable	ACP_CURSE	51	100	3	Armor,Shield	Any	2	false	0	0	-3
 Rusted	ACP_CURSE	25	50	1	Armor,Shield	Any	2	false	0	0	-2
 Fine	ACP	20	30	1	Armor,Shield	Any	2	true	20	100	2
@@ -45,7 +45,7 @@ Blessed	ACP	91	110	19	Armor,Shield	Good	2	true	620	800	11
 Saintly	ACP	111	130	24	Armor,Shield	Good	2	true	820	1200	13
 Awesome	ACP	131	150	28	Armor,Shield	Good	2	true	1220	2000	15
 Holy	ACP	151	170	30	Armor,Shield	Good	2	true	5200	6000	17
-Godly	ACP	171	200	40	Armor,Shield	Good	2	true	6200	7000	20
+Godly	ACP	171	200	35	Armor,Shield	Good	2	true	6200	7000	20
 Red	FIRERES	10	20	4	Armor,Shield,Weapon,Staff,Bow,Misc	Any	1	true	500	1500	2
 Crimson	FIRERES	21	30	10	Armor,Shield,Weapon,Staff,Bow,Misc	Any	1	true	2100	3000	2
 Crimson	FIRERES	31	40	16	Armor,Shield,Weapon,Staff,Bow,Misc	Any	1	true	3100	4000	2
@@ -82,3 +82,4 @@ Plentiful	CHARGES	2	2	4	Staff	Any	1	true	2000	2000	2
 Bountiful	CHARGES	3	3	9	Staff	Any	1	true	3000	3000	3
 Flaming	FIREDAM	1	10	7	Weapon,Staff	Any	1	true	5000	5000	2
 Lightning	LIGHTDAM	2	20	18	Weapon,Staff	Any	1	true	10000	10000	2
+Black	ALLRES_CURSE	41	50	30	Armor	Any	1	false	61000	75000	-4
