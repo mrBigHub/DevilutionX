@@ -75,11 +75,10 @@ Serpent's	MANA	30	40	15	Staff,Misc	Any	1	true	4100	6000	7
 Drake's	MANA	41	50	21	Staff,Misc	Any	1	true	6100	10000	9
 Dragon's	MANA	51	60	27	Staff,Misc	Any	1	true	10100	15000	11
 Wyrm's	MANA	61	80	30	Staff	Any	1	true	15100	19000	12
-Hydra's	MANA	81	100	40	Staff	Any	1	true	19100	30000	13
+Hydra's	MANA	81	100	35	Staff	Any	1	true	19100	30000	13
 Angel's	SPLLVLADD	1	1	15	Staff	Good	1	true	25000	25000	2
 Arch-Angel's	SPLLVLADD	2	2	25	Staff	Good	1	true	50000	50000	3
 Plentiful	CHARGES	2	2	4	Staff	Any	1	true	2000	2000	2
 Bountiful	CHARGES	3	3	9	Staff	Any	1	true	3000	3000	3
 Flaming	FIREDAM	1	10	7	Weapon,Staff	Any	1	true	5000	5000	2
 Lightning	LIGHTDAM	2	20	18	Weapon,Staff	Any	1	true	10000	10000	2
-Black	ALLRES_CURSE	41	50	30	Armor	Any	1	false	61000	75000	-4
