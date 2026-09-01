@@ -56,7 +56,7 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	1	Armor	Armor	CAPE	LightArmor	CAPE	Cape	Cape	1	12	0	0	1	5	0	0	0		NONE	Null	false	10
 	1	Armor	Armor	RAGS	LightArmor	RAGS	Rags	Rags	1	6	0	0	2	6	0	0	0		NONE	Null	false	5
 	1	Armor	Armor	CLOAK	LightArmor	CLOAK	Cloak	Cloak	2	18	0	0	3	7	0	0	0		NONE	Null	false	40
-	5	Armor	Armor	ROBE	LightArmor	ROBE	Robe	Robe	3	24	0	0	4	7	0	0	0		NONE	Null	false	75
+	10	Armor	Armor	ROBE	LightArmor	ROBE	Robe	Robe	3	24	0	0	4	7	0	0	0		NONE	Null	false	75
 	1	Armor	Armor	QUILTED_ARMOR	LightArmor	NONE	Quilted Armor	Armor	4	30	0	0	7	10	0	0	0		NONE	Null	false	200
 	1	Armor	Armor	LEATHER_ARMOR	LightArmor	LEATHARMOR	Leather Armor	Armor	6	35	0	0	10	13	0	0	0		NONE	Null	false	300
 	1	Armor	Armor	HARD_LEATHER_ARMOR	LightArmor	NONE	Hard Leather Armor	Armor	7	40	0	0	11	14	0	0	0		NONE	Null	false	450
@@ -68,9 +68,9 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	1	Armor	Armor	SPLINT_MAIL	MediumArmor	NONE	Splint Mail	Mail	17	65	0	0	30	35	40	0	0		NONE	Null	false	3250
 	1	Armor	Armor	FIELD_PLATE	HeavyArmor	PLATEMAIL	Plate Mail	Plate	19	75	0	0	42	50	60	0	0		NONE	Null	false	4600
 	1	Armor	Armor	FIELD_PLATE	HeavyArmor	NONE	Field Plate	Plate	21	80	0	0	40	45	65	0	0		NONE	Null	false	5800
-	10	Armor	Armor	GOTHIC_PLATE	HeavyArmor	GothicPlate	Gothic Plate	Plate	23	100	0	0	50	60	80	0	0		NONE	Null	false	8000
+	1	Armor	Armor	GOTHIC_PLATE	HeavyArmor	GothicPlate	Gothic Plate	Plate	23	100	0	0	50	60	80	0	0		NONE	Null	false	8000
 	1	Armor	Armor	FULL_PLATE_MAIL	HeavyArmor	FULLPLATE	Full Plate Mail	Plate	25	90	0	0	60	75	90	0	0		NONE	Null	false	6500
-	3	Armor	One-handed	BUCKLER	Shield	BUCKLER	Buckler	Shield	1	16	0	0	1	5	0	0	0		NONE	Null	false	30
+	5	Armor	One-handed	BUCKLER	Shield	BUCKLER	Buckler	Shield	1	16	0	0	1	5	0	0	0		NONE	Null	false	30
 	1	Armor	One-handed	SMALL_SHIELD	Shield	SMALLSHIELD	Small Shield	Shield	5	24	0	0	3	8	25	0	0		NONE	Null	false	90
 	1	Armor	One-handed	LARGE_SHIELD	Shield	LARGESHIELD	Large Shield	Shield	9	32	0	0	5	10	40	0	0		NONE	Null	false	200
 	1	Armor	One-handed	KITE_SHIELD	Shield	KITESHIELD	Kite Shield	Shield	14	40	0	0	8	15	50	0	0		NONE	Null	false	400
@@ -127,7 +127,7 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	1	Weapon	One-handed	LONG_SWORD	Sword	LONGSWR	Long Sword	Sword	6	40	2	10	0	0	30	0	30		NONE	Null	false	350
 	1	Weapon	One-handed	BROAD_SWORD	Sword	BROADSWR	Broad Sword	Sword	8	50	4	12	0	0	40	0	0		NONE	Null	false	750
 	10	Weapon	One-handed	BASTARD_SWORD	Sword	BASTARDSWR	Bastard Sword	Sword	10	60	6	15	0	0	50	0	0		NONE	Null	false	1000
-	1	Weapon	Two-handed	TWO_HANDED_SWORD	Sword	TWOHANDSWR	Two-Handed Sword	Sword	14	75	8	16	0	0	65	0	0		NONE	Null	false	1800
+	5	Weapon	Two-handed	TWO_HANDED_SWORD	Sword	TWOHANDSWR	Two-Handed Sword	Sword	14	75	8	16	0	0	65	0	0		NONE	Null	false	1800
 	5	Weapon	Two-handed	GREAT_SWORD	Sword	GREATSWR	Great Sword	Sword	17	100	10	20	0	0	75	0	0		NONE	Null	false	3000
 	1	Weapon	Two-handed	SMALL_AXE	Axe	SMALLAXE	Small Axe	Axe	2	24	2	10	0	0	0	0	0		NONE	Null	false	150
 	1	Weapon	Two-handed	AXE	Axe	NONE	Axe	Axe	4	32	4	12	0	0	22	0	0		NONE	Null	false	450
@@ -147,7 +147,7 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	2	Weapon	Two-handed	HUNTERS_BOW	Bow	LONGBOW	Long Bow	Bow	5	35	1	6	0	0	25	0	30		NONE	Null	false	250
 	2	Weapon	Two-handed	COMPOSITE_BOW	Bow	COMPBOW	Composite Bow	Bow	7	45	3	6	0	0	25	0	40		NONE	Null	false	600
 IDI_SHORT_BATTLE_BOW	2	Weapon	Two-handed	SHORT_BATTLE_BOW	Bow	NONE	Short Battle Bow	Bow	9	45	3	7	0	0	30	0	50		NONE	Null	false	750
-	3	Weapon	Two-handed	LONG_BATTLE_BOW	Bow	BATTLEBOW	Long Battle Bow	Bow	11	50	1	10	0	0	30	0	60		NONE	Null	false	1000
+	10	Weapon	Two-handed	LONG_BATTLE_BOW	Bow	BATTLEBOW	Long Battle Bow	Bow	11	50	1	10	0	0	30	0	60		NONE	Null	false	1000
 	2	Weapon	Two-handed	SHORT_WAR_BOW	Bow	SWARBOW	Short War Bow	Bow	15	55	4	8	0	0	35	0	70		NONE	Null	false	1500
 	2	Weapon	Two-handed	LONG_WAR_BOW	Bow	WARBOW	Long War Bow	Bow	19	60	1	14	0	0	45	0	80		NONE	Null	false	2000
 	1	Weapon	Two-handed	SHORT_STAFF	Staff	SHORTSTAFF	Short Staff	Staff	1	25	2	4	0	0	0	0	0		STAFF	Null	false	30
@@ -157,9 +157,9 @@ IDI_SHORT_BATTLE_BOW	2	Weapon	Two-handed	SHORT_BATTLE_BOW	Bow	NONE	Short Battle 
 	1	Weapon	Two-handed	WAR_STAFF	Staff	WARSTAFF	War Staff	Staff	12	75	8	16	0	0	30	0	0		STAFF	Null	false	1500
 	1	Misc	Ring	RING	Ring	RING	Ring	Ring	5	0	0	0	0	0	0	0	0		RING	Null	false	1000
 	1	Misc	Ring	RING	Ring	RING	Ring	Ring	10	0	0	0	0	0	0	0	0		RING	Null	false	1000
-	1	Misc	Ring	RING	Ring	RING	Ring	Ring	15	0	0	0	0	0	0	0	0		RING	Null	false	1000
+	5	Misc	Ring	RING	Ring	RING	Ring	Ring	15	0	0	0	0	0	0	0	0		RING	Null	false	1000
 	1	Misc	Amulet	AMULET	Amulet	AMULET	Amulet	Amulet	8	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
-	1	Misc	Amulet	AMULET	Amulet	AMULET	Amulet	Amulet	16	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
+	5	Misc	Amulet	AMULET	Amulet	AMULET	Amulet	Amulet	16	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
 	1	Misc	Unequippable	RUNE_OF_FIRE	Misc	NONE	Rune of Fire	Rune	1	0	0	0	0	0	0	0	0		RUNEF	Null	true	100
 	1	Misc	Unequippable	RUNE_OF_LIGHTNING	Misc	NONE	Rune of Lightning	Rune	3	0	0	0	0	0	0	13	0		RUNEL	Null	true	200
 	1	Misc	Unequippable	GREATER_RUNE_OF_FIRE	Misc	NONE	Greater Rune of Fire	Rune	7	0	0	0	0	0	0	42	0		GR_RUNEF	Null	true	400
