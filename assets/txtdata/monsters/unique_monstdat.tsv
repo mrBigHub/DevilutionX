@@ -91,7 +91,7 @@ MT_RTBLACK	Graywar the Slayer	general	14	672	SkeletonMelee	1	30	50	0	0	0	0	0	0	R
 MT_MAGISTR	Dreadjudge	general	14	540	Counselor	1	30	40	0	0	0	0	0	0	IMMUNE_MAGIC,RESIST_FIRE,RESIST_LIGHTNING	Leashed	0	0	
 MT_HLSPWN	Stareye the Witch	general	14	726	Succubus	2	30	50	0	0	0	0	0	0	IMMUNE_FIRE	None	0	0	
 MT_BTBLACK	Steelskull the Hunter	general	14	831	SkeletonMelee	3	40	50	0	0	0	0	0	0	RESIST_LIGHTNING	None	0	0	
-MT_RBLACK	Sir Gorash	general	16	1050	Rhino	3	20	60	0	0	0	0	0	0	IMMUNE_MAGIC,IMMUNE_FIRE,RESIST_LIGHTNING	None	0	0	
+MT_RBLACK	Sir GoneMad	general	16	1050	Sneak	3	20	60	0	0	0	0	0	0	IMMUNE_MAGIC,IMMUNE_FIRE,RESIST_LIGHTNING	None	0	0	
 MT_CABALIST	The Vizier	general	15	850	Counselor	2	25	40	0	0	0	0	0	0	IMMUNE_FIRE	Leashed	0	0	
 MT_REALWEAV	Zamphir	general	15	891	SkeletonMelee	2	30	50	0	0	0	0	0	0	IMMUNE_MAGIC,RESIST_FIRE,RESIST_LIGHTNING	Leashed	0	0	
 MT_HLSPWN	Bloodlust	general	15	825	Succubus	1	20	55	0	0	0	0	0	0	IMMUNE_MAGIC,IMMUNE_LIGHTNING	None	0	0	
