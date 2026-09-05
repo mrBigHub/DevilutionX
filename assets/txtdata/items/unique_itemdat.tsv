@@ -1,6 +1,6 @@
 name	cursorGraphic	uniqueBaseItem	minLevel	value	power0	power0.value1	power0.value2	power1	power1.value1	power1.value2	power2	power2.value1	power2.value2	power3	power3.value1	power3.value2	power4	power4.value1	power4.value2	power5	power5.value1	power5.value2
 The Butcher's Cleaver		CLEAVER	1	3650	STR	10	10	SETDAM	4	24	SETDUR	10	10									
-The Undead Crown	HELM_OF_SPIRITS	SKCROWN	1	16650	RNDSTEALLIFE			MAGRES	10	10	LIGHTRES	10	10	FIRERES	10	10						
+The Undead Crown	HELM_OF_SPIRITS	SKCROWN	1	16650	RNDSTEALLIFE			MAGICRES	10	10	LIGHTRES	10	10	FIRERES_CURSE	10	10						
 Empyrean Band		INFRARING	1	8000	ATTRIBS	2	2	LIGHT	2	2	FASTRECOVER	1	1	ABSHALFTRAP								
 Optic Amulet		OPTAMULET	1	9750	LIGHT	2	2	LIGHTRES	20	20	GETHIT	1	1	MAG	5	5						
 Ring of Truth		TRING	1	9100	LIFE	10	10	GETHIT	1	1	ALLRES	10	10									
