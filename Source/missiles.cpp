@@ -433,21 +433,20 @@ bool Plr2PlrMHit(const Player &player, Player &target, int mindam, int maxdam, i
 	}
 	if (!missileData.isArrow())
 		dam /= 2;
-	if (resper > 0) {
-		dam -= (dam * resper) / 100;
-		if (&player == MyPlayer)
-			NetSendCmdDamage(true, target, dam, damageType);
-		target.Say(HeroSpeech::ArghClang);
-		return true;
-	}
-
-	if (blkper < blk) {
+	if (resper <= 40 && blkper < blk) {
 		StartPlrBlock(target, GetDirection(target.position.tile, player.position.tile));
 		*blocked = true;
 	} else {
-		if (&player == MyPlayer)
-			NetSendCmdDamage(true, target, dam, damageType);
-		StartPlrHit(target, dam, false);
+		if (resper > 0) {
+			dam -= (dam * resper) / 100;
+			if (&player == MyPlayer)
+				NetSendCmdDamage(true, target, dam, damageType);
+			target.Say(HeroSpeech::ArghClang);
+		} else {
+			if (&player == MyPlayer)
+				NetSendCmdDamage(true, target, dam, damageType);
+			StartPlrHit(target, dam, false);
+		}
 	}
 
 	return true;
@@ -1169,7 +1168,7 @@ bool PlayerMHit(Player &player, Monster *monster, int dist, int mind, int maxd, 
 		dam = std::max(dam, 64);
 	}
 
-	if ((resper <= 0 || gbIsHellfire) && blk < blkper) {
+	if (resper <= 40 && blk < blkper) {
 		Direction dir = player._pdir;
 		if (monster != nullptr) {
 			dir = GetDirection(player.position.tile, monster->position.tile);
