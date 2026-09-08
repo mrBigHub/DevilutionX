@@ -2395,6 +2395,11 @@ void AddStoneCurse(Missile &missile, AddMissileParameter &parameter)
 	const int monsterId = std::abs(dMonster[targetMonsterPosition->x][targetMonsterPosition->y]) - 1;
 	Monster &monster = Monsters[monsterId];
 
+	// Monster is immune to Stone Curse
+	if ((monster.resistance & IMMUNE_STONE) != 0) {
+	missile._miDelFlag = true;
+	return;
+}
 	if (monster.mode == MonsterMode::Petrified) {
 		// Monster is already petrified and StoneCurse doesn't stack
 		missile._miDelFlag = true;
