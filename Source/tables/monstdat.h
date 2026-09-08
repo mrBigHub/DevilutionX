@@ -12,7 +12,7 @@
 
 #include <magic_enum/magic_enum.hpp>
 
-#include "cursor.h"
+#include "cursor_defs.hpp"
 #include "tables/textdat.h"
 
 namespace devilution {
@@ -77,6 +77,7 @@ enum monster_resistance : uint8_t {
 	IMMUNE_MAGIC     = 1 << 3,
 	IMMUNE_FIRE      = 1 << 4,
 	IMMUNE_LIGHTNING = 1 << 5,
+	IMMUNE_STONE = 1 << 6,
 	IMMUNE_ACID      = 1 << 7,
 	// clang-format on
 };
