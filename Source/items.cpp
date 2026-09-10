@@ -4727,6 +4727,50 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 		DeltaAddItem(ii);
 }
 
+struct LazarusDrop {
+	_unique_items uid;
+	int weight;
+};
+
+const LazarusDrop LazarusDrops[] = {
+	{ UITEM_THINKINGCAP, 25 },
+	{ UITEM_MINDCRY,     25 },
+	{ UITEM_NAJPLATE,    25 }, // Naj's Robe
+	{ UITEM_INVALID,     25 }, // แทนหนังสือเวทสุ่ม
+};
+
+const SpellID RandomBookSpells[] = {
+	SpellID::Teleport,
+	SpellID::ChainLightning,
+	SpellID::Guardian,
+	SpellID::StoneCurse,
+	SpellID::Golem,
+};
+
+bool SpawnLazarusLoot(Point pos)
+{
+	if (GenerateRnd(100) >= 20) // เกต 20%
+		return false;
+
+	int total = 0;
+	for (const auto &d : LazarusDrops) total += d.weight;
+
+	int roll = GenerateRnd(total);
+	for (const auto &d : LazarusDrops) {
+		roll -= d.weight;
+		if (roll < 0) {
+			if (d.uid == UITEM_INVALID) {
+				const SpellID randomSpell = RandomBookSpells[GenerateRnd(sizeof(RandomBookSpells) / sizeof(RandomBookSpells[0]))];
+				CreateSpellBook(pos, randomSpell, true, false);
+			} else {
+				SpawnUnique(d.uid, pos);
+			}
+			return true;
+		}
+	}
+	return false;
+}
+
 void CreateMagicArmor(Point position, ItemType itemType, int icurs, bool sendmsg, bool delta)
 {
 	const int lvl = ItemsGetCurrlevel();
