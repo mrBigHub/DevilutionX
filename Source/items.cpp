@@ -4749,7 +4749,7 @@ const SpellID RandomBookSpells[] = {
 
 bool SpawnLazarusLoot(Point pos)
 {
-	if (GenerateRnd(100) >= 20) // เกต 20%
+	if (GenerateRnd(100) >= 0) // เกต 20%
 		return false;
 
 	int total = 0;
