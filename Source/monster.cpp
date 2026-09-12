@@ -4003,12 +4003,12 @@ void MonsterDeath(Monster &monster, Direction md, bool sendmsg)
 	monster.flags &= ~MFLAG_HIDDEN;
 	SetRndSeed(monster.rndItemSeed);
 
-	SpawnLoot(monster, sendmsg);
-
 	// ดรอปพิเศษของ Lazarus
 	if (monster.ai == MonsterAIID::Lazarus) {
-		SpawnLazarusLoot(monster.position.tile);
+    if (SpawnLazarusLoot(monster.position.tile))
+        return;
 	}
+	SpawnLoot(monster, sendmsg);
 	
 	if (monster.type().type == MT_DIABLO)
 		DiabloDeath(monster, true);

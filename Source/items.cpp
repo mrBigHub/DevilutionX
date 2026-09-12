@@ -4735,7 +4735,7 @@ struct LazarusDrop {
 const LazarusDrop LazarusDrops[] = {
 	{ UITEM_THINKINGCAP, 25 },
 	{ UITEM_MINDCRY,     25 },
-	{ UITEM_NAJPLATE,    25 }, // Naj's Robe
+	{ UITEM_NIGHTSCAPE,    25 }, // Naj's Robe
 	{ UITEM_INVALID,     25 }, // แทนหนังสือเวทสุ่ม
 };
 
@@ -4749,7 +4749,7 @@ const SpellID RandomBookSpells[] = {
 
 bool SpawnLazarusLoot(Point pos)
 {
-	if (GenerateRnd(100) >= 0) // เกต 20%
+	if (GenerateRnd(100) >= 50) // เกต 50%
 		return false;
 
 	int total = 0;
