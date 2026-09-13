@@ -4763,7 +4763,10 @@ bool SpawnLazarusLoot(Point pos)
 				const SpellID randomSpell = RandomBookSpells[GenerateRnd(sizeof(RandomBookSpells) / sizeof(RandomBookSpells[0]))];
 				CreateSpellBook(pos, randomSpell, true, false);
 			} else {
-				SpawnUnique(d.uid, pos);
+	Item *droppedItem = SpawnUnique(d.uid, pos);
+	if (droppedItem != nullptr) {
+		droppedItem->_iCreateInfo |= CF_UNIQUE;
+				}
 			}
 			return true;
 		}
