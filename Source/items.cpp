@@ -4765,6 +4765,7 @@ bool SpawnLazarusLoot(Point pos)
 			} else {
 	Item *droppedItem = SpawnUnique(d.uid, pos);
 	if (droppedItem != nullptr) {
+		droppedItem->_iUniqueId = d.uid; // เพิ่มบรรทัดนี้เข้าไปครับ
 		droppedItem->_iCreateInfo |= CF_UNIQUE;
 				}
 			}
