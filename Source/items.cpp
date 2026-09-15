@@ -4765,7 +4765,8 @@ bool SpawnLazarusLoot(Point pos)
 			} else {
 	Item *droppedItem = SpawnUnique(d.uid, pos);
 	if (droppedItem != nullptr) {
-		droppedItem->_iCreateInfo = (static_cast<uint16_t>(d.uid) << 8) | CF_PRESET; // by gemini flash extended
+    // ใช้ = แทน |= เพื่อเคลียร์ค่าเดิมและเซ็ตค่าใหม่ที่ถูกต้องเข้าไปที่บิตบน
+    droppedItem->_iCreateInfo = (static_cast<uint16_t>(d.uid) << 8) | CF_PRESET;
 				}
 			}
 			return true;
