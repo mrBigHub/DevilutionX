@@ -4763,10 +4763,9 @@ bool SpawnLazarusLoot(Point pos)
 				const SpellID randomSpell = RandomBookSpells[GenerateRnd(sizeof(RandomBookSpells) / sizeof(RandomBookSpells[0]))];
 				CreateSpellBook(pos, randomSpell, true, false);
 			} else {
-	Item *droppedItem = SpawnUnique(d.uid, pos, std::nullopt, true, true);
+	Item *droppedItem = SpawnUnique(d.uid, pos, AdvanceRndSeed(), true, true);
 	if (droppedItem != nullptr) {
-	droppedItem->_iCreateInfo |= CF_PREGEN; // ใช้ OR เพื่อเพิ่ม Flag โดยไม่ทำลายของเดิม
-	// บรรทัดที่เพิ่ม: สั่งให้เกมบังคับ Generate ค่า Unique Properties เข้าไปที่ไอเท็มนี้ทันที
+	droppedItem->_iCreateInfo |= CF_UNIQUE | CF_PREGEN;
 				}
 			}
 			return true;
