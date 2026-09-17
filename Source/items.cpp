@@ -4765,10 +4765,10 @@ bool SpawnLazarusLoot(Point pos)
 			} else {
 	Item *droppedItem = SpawnUnique(d.uid, pos, std::nullopt, true, true);
 	if (droppedItem != nullptr) {
-	droppedItem->_iCreateInfo |= CF_PRESET; // ใช้ OR เพื่อเพิ่ม Flag โดยไม่ทำลายของเดิม
+	droppedItem->_iCreateInfo |= CF_PREGEN; // ใช้ OR เพื่อเพิ่ม Flag โดยไม่ทำลายของเดิม
 	// บรรทัดที่เพิ่ม: สั่งให้เกมบังคับ Generate ค่า Unique Properties เข้าไปที่ไอเท็มนี้ทันที
     // เพื่อให้ RecreateItem มีข้อมูลครบถ้วนตอนบันทึกเซฟ
-    GetUniqueItem(*droppedItem, d.uid);
+    GetUniqueItem(player,*droppedItem, d.uid);
 				}
 			}
 			return true;
