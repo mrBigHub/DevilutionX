@@ -4727,46 +4727,25 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 		DeltaAddItem(ii);
 }
 
-struct LazarusDrop {
-	_unique_items uid;
-	int weight;
-};
+	// --- Lazarus special drop: 33% chance ---
+	if (MyPlayer == &player && GenerateRnd(3) == 0) {
+    const Point pos = monster.position.tile + Direction::South;
 
-const LazarusDrop LazarusDrops[] = {
-	{ UITEM_THINKINGCAP, 25 },
-	{ UITEM_MINDCRY,     25 },
-	{ UITEM_NIGHTSCAPE,    25 }, // Naj's Robe
-	{ UITEM_INVALID,     25 }, // แทนหนังสือเวทสุ่ม
-};
-
-const SpellID RandomBookSpells[] = {
-	SpellID::Teleport,
-	SpellID::ChainLightning,
-	SpellID::Guardian,
-	SpellID::StoneCurse,
-	SpellID::Golem,
-};
-
-bool SpawnLazarusLoot(Point pos)
-{
-	if (GenerateRnd(100) >= 50) // เกต 50%
-		return false;
-
-	int total = 0;
-	for (const auto &d : LazarusDrops) total += d.weight;
-
-	int roll = GenerateRnd(total);
-	for (const auto &d : LazarusDrops) {
-		roll -= d.weight;
-		if (roll < 0) {
-			if (d.uid == UITEM_INVALID) {
-				const SpellID randomSpell = RandomBookSpells[GenerateRnd(sizeof(RandomBookSpells) / sizeof(RandomBookSpells[0]))];
-				CreateSpellBook(pos, randomSpell, true, false);
-			} else {
-	Item *droppedItem = SpawnUnique(d.uid, pos, AdvanceRndSeed(), true, true);
-	if (droppedItem != nullptr) {
-	droppedItem->_iCreateInfo |= CF_UNIQUE | CF_PREGEN;
-				}
+    switch (GenerateRnd(4)) {
+    case 0:
+        SpawnUnique(UITEM_THINKINGCAP, pos, std::nullopt, true);
+        break;
+    case 1:
+        SpawnUnique(UITEM_MINDCRY, pos, std::nullopt, true);
+        break;
+    case 2:
+        SpawnUnique(UITEM_NIGHTSCAPE, pos, std::nullopt, true);
+        break;
+    default: {
+        constexpr SpellID Books[] = { SpellID::Teleport, SpellID::StoneCurse, SpellID::Golem };
+        CreateSpellBook(pos, Books[GenerateRnd(3)], true, false);
+    } break;
+}
 			}
 			return true;
 		}
