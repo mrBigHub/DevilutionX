@@ -4726,31 +4726,21 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 	if (delta)
 		DeltaAddItem(ii);
 }
+	bool SpawnLazarusLoot(Point position)	//Lazarus Special Drop
+{
+	if (GenerateRnd(3) != 0)
+		return false;
 
-	// --- Lazarus special drop: 33% chance ---
-	if (MyPlayer == &player && GenerateRnd(3) == 0) {
-    const Point pos = monster.position.tile + Direction::South;
-
-    switch (GenerateRnd(4)) {
-    case 0:
-        SpawnUnique(UITEM_THINKINGCAP, pos, std::nullopt, true);
-        break;
-    case 1:
-        SpawnUnique(UITEM_MINDCRY, pos, std::nullopt, true);
-        break;
-    case 2:
-        SpawnUnique(UITEM_NIGHTSCAPE, pos, std::nullopt, true);
-        break;
-    default: {
-        constexpr SpellID Books[] = { SpellID::Teleport, SpellID::StoneCurse, SpellID::Golem };
-        CreateSpellBook(pos, Books[GenerateRnd(3)], true, false);
-    } break;
-}
-			}
-			return true;
-		}
+	switch (GenerateRnd(4)) {
+	case 0: SpawnUnique(UITEM_THINKINGCAP, position, std::nullopt, true); break;
+	case 1: SpawnUnique(UITEM_MINDCRY, position, std::nullopt, true); break;
+	case 2: SpawnUnique(UITEM_NIGHTSCAPE, position, std::nullopt, true); break;
+	default: {
+		constexpr SpellID Books[] = { SpellID::Teleport, SpellID::StoneCurse, SpellID::Golem };
+		CreateSpellBook(position, Books[GenerateRnd(3)], true, false);
+	} break;
 	}
-	return false;
+	return true;
 }
 
 void CreateMagicArmor(Point position, ItemType itemType, int icurs, bool sendmsg, bool delta)
