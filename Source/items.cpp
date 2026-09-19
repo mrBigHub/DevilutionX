@@ -4740,10 +4740,6 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 		CreateSpellBook(position, Books[GenerateRnd(3)], true, false);
 	} break;
 	}
-		// 2. ถ้ามีไอเทมดรอปออกมา ให้ประทับตรา CF_UNIQUE ให้เกมจำได้ตอนเซฟ/โหลด
-	if (droppedItem != nullptr) {
-		droppedItem->_iCreateInfo |= CF_UNIQUE; 
-	}
 	return true;
 }
 
