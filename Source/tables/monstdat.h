@@ -297,10 +297,10 @@ enum _monster_id : int16_t {
 	MT_FLESTHNG,
 	MT_REAPER,
 	MT_NAKRUL,
+	MT_STORMSOLD
 	NUM_DEFAULT_MTYPES,
 	NUM_MAX_MTYPES = 200, // same as MaxMonsters, for the sake of save game compability
 	MT_INVALID = -1,
-	MT_STORMSOLD
 };
 
 /**
