@@ -3436,6 +3436,7 @@ std::expected<void, std::string> GetLevelMTypes()
 		RETURN_IF_ERROR(AddMonsterType(MT_ADVOCATE, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_RBLACK, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_DIABLO, PLACE_SPECIAL));
+		RETURN_IF_ERROR(AddMonsterType(MT_STORMSOLD, PLACE_SCATTER));	//new monster
 		return {};
 	}
 
