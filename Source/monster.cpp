@@ -3436,7 +3436,7 @@ std::expected<void, std::string> GetLevelMTypes()
 		RETURN_IF_ERROR(AddMonsterType(MT_ADVOCATE, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_RBLACK, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_DIABLO, PLACE_SPECIAL));
-		RETURN_IF_ERROR(AddMonsterType(MT_STORMSOLD, PLACE_SCATTER));	//new monster
+		RETURN_IF_ERROR(AddMonsterType(MT_STORMCLAW, PLACE_SCATTER));
 		return {};
 	}
 
@@ -3736,8 +3736,17 @@ std::expected<void, std::string> InitMonsters()
 					na = GenerateRnd(3) + 3;
 				PlaceGroup(typeIndex, na);
 			}
+		}   // <- ปิด if (numscattypes > 0)
+		if (currlevel == 16) {
+			for (size_t i = 0; i < LevelMonsterTypeCount; i++) {
+				if (LevelMonsterTypes[i].type == MT_STORMCLAW) {
+					for (int n = 0; n < 20; n++)
+						PlaceGroup(i, 1);
+					break;
+				}
+			}	
 		}
-	}
+	}	// <- ปิด if (!setlevel)
 	for (int i = 0; i < nt; i++) {
 		for (int s = -2; s < 2; s++) {
 			for (int t = -2; t < 2; t++)
