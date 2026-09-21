@@ -3437,6 +3437,8 @@ std::expected<void, std::string> GetLevelMTypes()
 		RETURN_IF_ERROR(AddMonsterType(MT_RBLACK, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_DIABLO, PLACE_SPECIAL));
 		RETURN_IF_ERROR(AddMonsterType(MT_STORMCLAW, PLACE_SCATTER));
+		RETURN_IF_ERROR(AddMonsterType(MT_LSUCCUBUS, PLACE_SPECIAL));
+		RETURN_IF_ERROR(AddMonsterType(MT_GDEMON, PLACE_SPECIAL));
 		return {};
 	}
 
@@ -4308,8 +4310,6 @@ void ProcessMonsters()
 			if (monster.type().type == MT_DEFILER)
 				PlaySFX(SfxID::Defiler8);
 			}
-			if (monster.type().type == MT_RBLACK) {
-				PlaySFX(SfxID::ButcherGreeting);
 			UpdateEnemy(monster);
 		}
 
