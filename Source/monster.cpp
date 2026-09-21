@@ -4307,7 +4307,6 @@ void ProcessMonsters()
 			}
 			if (monster.type().type == MT_DEFILER)
 				PlaySFX(SfxID::Defiler8);
-			}
 			UpdateEnemy(monster);
 		}
 
