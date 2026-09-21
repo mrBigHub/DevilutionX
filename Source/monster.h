@@ -69,6 +69,8 @@ enum class UniqueMonsterType : uint8_t {
 	HorkDemon,
 	Defiler,
 	NaKrul,
+	LadySuccubus,	// new unique 01
+	GreaterDemon,	// new unique 02
 	None = static_cast<uint8_t>(-1),
 };
 
