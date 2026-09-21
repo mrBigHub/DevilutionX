@@ -216,6 +216,8 @@ const _monster_id MonstConvTbl[] = {
 	MT_INVILORD,
 	MT_LRDSAYTR,
 	MT_STORMCLAW,
+	MT_LSUCCUBUS,
+	MT_GBALROG,
 };
 
 namespace {
