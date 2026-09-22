@@ -3742,7 +3742,9 @@ std::expected<void, std::string> InitMonsters()
 		if (currlevel == 16) {
 			for (size_t i = 0; i < LevelMonsterTypeCount; i++) {
 				if (LevelMonsterTypes[i].type == MT_STORMCLAW) {
-					for (int n = 0; n < 20; n++);
+					for (int n = 0; n < 20; n++){
+						PlaceMonster(i);
+					}
 					break;
 				}
 			}	
