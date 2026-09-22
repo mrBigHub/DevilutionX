@@ -3739,12 +3739,17 @@ std::expected<void, std::string> InitMonsters()
 				PlaceGroup(typeIndex, na);
 			}
 		}   // <- ปิด if (numscattypes > 0)
-		if (currlevel == 16) {
-			for (size_t i = 0; i < LevelMonsterTypeCount; i++) {
-				if (LevelMonsterTypes[i].type == MT_STORMCLAW) {
-					for (int n = 0; n < 20; n++) {
-                if (ActiveMonsterCount >= MaxMonsters) break;
-                PlaceMonster(ActiveMonsterCount++, i, GetRandomAvailableMonsterPosition());
+if (currlevel == 16) {
+    for (size_t i = 0; i < LevelMonsterTypeCount; i++) {
+        if (LevelMonsterTypes[i].type == MT_STORMCLAW) {
+            for (int n = 0; n < 20 && ActiveMonsterCount < MaxMonsters; n++) {
+                Point pos;
+                int tries = 0;
+                do {
+                    pos = Point { GenerateRnd(80), GenerateRnd(80) } + Displacement { 16, 16 };
+                } while (!CanPlaceMonster(pos) && ++tries < 100);
+                if (tries >= 100) break;
+                PlaceMonster(ActiveMonsterCount++, i, pos);
             }
 					break;
 				}
