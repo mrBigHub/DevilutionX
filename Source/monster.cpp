@@ -3436,9 +3436,11 @@ std::expected<void, std::string> GetLevelMTypes()
 		RETURN_IF_ERROR(AddMonsterType(MT_ADVOCATE, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_RBLACK, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_DIABLO, PLACE_SPECIAL));
-		RETURN_IF_ERROR(AddMonsterType(MT_STORMCLAW, PLACE_SCATTER));
-		RETURN_IF_ERROR(AddMonsterType(MT_LSUCCUBUS, PLACE_SCATTER));
-		RETURN_IF_ERROR(AddMonsterType(MT_GBALROG, PLACE_SCATTER));
+		RETURN_IF_ERROR(AddMonsterType(MT_MAGMAG, PLACE_SCATTER));	// new monster
+		RETURN_IF_ERROR(AddMonsterType(MT_HHOUND, PLACE_UNIQUE));	// new type for U_Hell Hound
+		RETURN_IF_ERROR(AddMonsterType(MT_LSUCCUBUS, PLACE_UNIQUE));	// new type for U_Lady Succubus
+		RETURN_IF_ERROR(AddMonsterType(MT_STORMCLAW, PLACE_UNIQUE));	// new type for U_Storm Claw
+		RETURN_IF_ERROR(AddMonsterType(MT_GBALROG, PLACE_UNIQUE));	// new type for U_Greater Demon
 		return {};
 	}
 
@@ -3737,25 +3739,9 @@ std::expected<void, std::string> InitMonsters()
 				else
 					na = GenerateRnd(3) + 3;
 				PlaceGroup(typeIndex, na);
-			}
-		}   // <- ปิด if (numscattypes > 0)
-if (currlevel == 16) {
-    for (size_t i = 0; i < LevelMonsterTypeCount; i++) {
-        if (LevelMonsterTypes[i].type == MT_STORMCLAW) {
-            for (int n = 0; n < 20 && ActiveMonsterCount < MaxMonsters; n++) {
-                Point pos;
-                int tries = 0;
-                do {
-                    pos = Point { GenerateRnd(80), GenerateRnd(80) } + Displacement { 16, 16 };
-                } while (!CanPlaceMonster(pos) && ++tries < 100);
-                if (tries >= 100) break;
-                PlaceMonster(ActiveMonsterCount++, i, pos);
-            }
-					break;
 				}
 			}	
 		}
-	}	// <- ปิด if (!setlevel)
 	for (int i = 0; i < nt; i++) {
 		for (int s = -2; s < 2; s++) {
 			for (int t = -2; t < 2; t++)
