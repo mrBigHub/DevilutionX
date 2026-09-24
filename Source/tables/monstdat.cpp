@@ -215,7 +215,7 @@ const _monster_id MonstConvTbl[] = {
 	MT_CLEAVER,
 	MT_INVILORD,
 	MT_LRDSAYTR,
-	MT_HHOUND,
+	MT_BSKEL,
 	MT_LMAGMA,
 	MT_LSUCCUBUS,
 	MT_STORMCLAW,
