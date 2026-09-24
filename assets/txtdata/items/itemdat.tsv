@@ -147,7 +147,7 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	2	Weapon	Two-handed	HUNTERS_BOW	Bow	LONGBOW	Long Bow	Bow	5	35	1	6	0	0	25	0	30		NONE	Null	false	250
 	2	Weapon	Two-handed	COMPOSITE_BOW	Bow	COMPBOW	Composite Bow	Bow	7	45	3	6	0	0	25	0	40		NONE	Null	false	600
 IDI_SHORT_BATTLE_BOW	2	Weapon	Two-handed	SHORT_BATTLE_BOW	Bow	NONE	Short Battle Bow	Bow	9	45	3	7	0	0	30	0	50		NONE	Null	false	750
-	20	Weapon	Two-handed	LONG_BATTLE_BOW	Bow	BATTLEBOW	Long Battle Bow	Bow	11	50	1	10	0	0	30	0	60		NONE	Null	false	1000
+	2	Weapon	Two-handed	LONG_BATTLE_BOW	Bow	BATTLEBOW	Long Battle Bow	Bow	11	50	1	10	0	0	30	0	60		NONE	Null	false	1000
 	2	Weapon	Two-handed	SHORT_WAR_BOW	Bow	SWARBOW	Short War Bow	Bow	15	55	4	8	0	0	35	0	70		NONE	Null	false	1500
 	2	Weapon	Two-handed	LONG_WAR_BOW	Bow	WARBOW	Long War Bow	Bow	19	60	1	14	0	0	45	0	80		NONE	Null	false	2000
 	1	Weapon	Two-handed	SHORT_STAFF	Staff	SHORTSTAFF	Short Staff	Staff	1	25	2	4	0	0	0	0	0		STAFF	Null	false	30
@@ -157,9 +157,9 @@ IDI_SHORT_BATTLE_BOW	2	Weapon	Two-handed	SHORT_BATTLE_BOW	Bow	NONE	Short Battle 
 	1	Weapon	Two-handed	WAR_STAFF	Staff	WARSTAFF	War Staff	Staff	12	75	8	16	0	0	30	0	0		STAFF	Null	false	1500
 	1	Misc	Ring	RING	Ring	RING	Ring	Ring	5	0	0	0	0	0	0	0	0		RING	Null	false	1000
 	1	Misc	Ring	RING	Ring	RING	Ring	Ring	10	0	0	0	0	0	0	0	0		RING	Null	false	1000
-	5	Misc	Ring	RING	Ring	RING	Ring	Ring	15	0	0	0	0	0	0	0	0		RING	Null	false	1000
+	2	Misc	Ring	RING	Ring	RING	Ring	Ring	15	0	0	0	0	0	0	0	0		RING	Null	false	1000
 	1	Misc	Amulet	AMULET	Amulet	AMULET	Amulet	Amulet	8	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
-	5	Misc	Amulet	AMULET	Amulet	AMULET	Amulet	Amulet	16	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
+	2	Misc	Amulet	AMULET	Amulet	AMULET	Amulet	Amulet	16	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
 	1	Misc	Unequippable	RUNE_OF_FIRE	Misc	NONE	Rune of Fire	Rune	1	0	0	0	0	0	0	0	0		RUNEF	Null	true	100
 	1	Misc	Unequippable	RUNE_OF_LIGHTNING	Misc	NONE	Rune of Lightning	Rune	3	0	0	0	0	0	0	13	0		RUNEL	Null	true	200
 	1	Misc	Unequippable	GREATER_RUNE_OF_FIRE	Misc	NONE	Greater Rune of Fire	Rune	7	0	0	0	0	0	0	42	0		GR_RUNEF	Null	true	400
