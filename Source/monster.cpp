@@ -3436,7 +3436,7 @@ std::expected<void, std::string> GetLevelMTypes()
 		RETURN_IF_ERROR(AddMonsterType(MT_ADVOCATE, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_RBLACK, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_DIABLO, PLACE_SPECIAL));
-		RETURN_IF_ERROR(AddMonsterType(MT_MAGMAG, PLACE_SCATTER));	// new monster
+		RETURN_IF_ERROR(AddMonsterType(MT_LMAGMA, PLACE_SCATTER));	// new monster
 		RETURN_IF_ERROR(AddMonsterType(MT_HHOUND, PLACE_UNIQUE));	// new type for U_Hell Hound
 		RETURN_IF_ERROR(AddMonsterType(MT_LSUCCUBUS, PLACE_UNIQUE));	// new type for U_Lady Succubus
 		RETURN_IF_ERROR(AddMonsterType(MT_STORMCLAW, PLACE_UNIQUE));	// new type for U_Storm Claw
