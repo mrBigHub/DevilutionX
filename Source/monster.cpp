@@ -1275,7 +1275,7 @@ bool MonsterAttack(Monster &monster)
 		if (monster.ai != MonsterAIID::Snake)
 			PlayEffect(monster, MonsterSound::Attack);
 	}
-	if (IsAnyOf(monster.type().type, MT_NMAGMA, MT_YMAGMA, MT_BMAGMA, MT_WMAGMA) && monster.animInfo.currentFrame == 8) {
+	if (IsAnyOf(monster.type().type, MT_NMAGMA, MT_YMAGMA, MT_BMAGMA, MT_WMAGMA, MT_LMAGMA) && monster.animInfo.currentFrame == 8) {
 		MonsterAttackEnemy(monster, monster.toHit(sgGameInitInfo.nDifficulty) + 10, monster.minDamage - 2, monster.maxDamage - 2);
 
 		PlayEffect(monster, MonsterSound::Attack);
@@ -3578,7 +3578,7 @@ std::expected<void, std::string> InitMonsterGFX(CMonster &monsterType, MonsterSp
 		InitMonsterTRN(monsterType);
 	}
 
-	if (IsAnyOf(mtype, MT_NMAGMA, MT_YMAGMA, MT_BMAGMA, MT_WMAGMA))
+	if (IsAnyOf(mtype, MT_NMAGMA, MT_YMAGMA, MT_BMAGMA, MT_WMAGMA, MT_LMAGMA))
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::MagmaBall).LoadGFX());
 	if (IsAnyOf(mtype, MT_STORM, MT_RSTORM, MT_STORML, MT_MAEL))
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ThinLightning).LoadGFX());
