@@ -69,7 +69,7 @@ enum class UniqueMonsterType : uint8_t {
 	HorkDemon,
 	Defiler,
 	NaKrul,
-	Cerberus,	// new unique 01
+	BiGSkeleton,	// new unique 01
 	LadySuccubus,	// new unique 02
 	DarkThunder,	// new unique 03
 	GreaterDemon,	// new unique 04
