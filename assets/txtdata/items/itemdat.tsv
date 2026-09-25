@@ -118,7 +118,7 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	1	Misc	Unequippable	BOOK_BLUE	Misc	NONE	Book of 		14	0	0	0	0	0	0	0	0		BOOK	Null	true	0
 	1	Misc	Unequippable	BOOK_BLUE	Misc	NONE	Book of 		20	0	0	0	0	0	0	0	0		BOOK	Null	true	0
 	1	Weapon	One-handed	DAGGER	Sword	DAGGER	Dagger	Dagger	1	16	1	4	0	0	0	0	0		NONE	Null	false	60
-	1	Weapon	One-handed	SHORT_SWORD	Sword	NONE	Short Sword	Sword	1	24	2	6	0	0	18	0	0		NONE	Null	false	120
+	1	Weapon	One-handed	SHORT_SWORD	Sword	SSWORD	Short Sword	Sword	1	24	2	6	0	0	18	0	0		NONE	Null	false	120
 	1	Weapon	One-handed	FALCHION	Sword	FALCHION	Falchion	Sword	2	20	4	8	0	0	30	0	0		NONE	Null	false	250
 	1	Weapon	One-handed	SCIMITAR	Sword	SCIMITAR	Scimitar	Sword	4	28	3	7	0	0	23	0	23		NONE	Null	false	200
 	1	Weapon	One-handed	CLAYMORE	Sword	CLAYMORE	Claymore	Sword	5	36	1	12	0	0	35	0	0		NONE	Null	false	450
