@@ -4727,59 +4727,66 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 		DeltaAddItem(ii);
 }
 	struct LazarusDrop {
-		_unique_items uid;
-		int weight;
+	_unique_items uid;
+	int weight;
 };
 
-	const LazarusDrop LazarusDrops[] = {
-		{ UITEM_THINKINGCAP, 30 },
-		{ UITEM_NIGHTSCAPE,    30 }, // Naj's Robe
-		{ UITEM_INVALID,     40 }, // แทนหนังสือเวทสุ่ม
+const LazarusDrop LazarusDrops[] = {
+	{ UITEM_THINKINGCAP, 30 },
+	{ UITEM_NIGHTSCAPE, 30 }, // Naj's Robe
+	{ UITEM_INVALID, 40 },    // หนังสือเวทสุ่ม
 };
 
-	const SpellID RandomBookSpells[] = {
-		SpellID::Teleport,
-		SpellID::Guardian,
-		SpellID::StoneCurse,
-		SpellID::Golem,
-};
-	bool SpawnLazarusLoot(Point pos, bool sendmsg)
+bool SpawnLazarusLoot(Point pos, bool sendmsg) // Lazarus special drop
 {
-		if (GenerateRnd(100) >= 50)
-			return false;
+	if (GenerateRnd(100) >= 50)
+		return false;
 
-		// ...เลือก d จาก LazarusDrops ตามน้ำหนักเดิมของคุณ...
+	// เลือกของตามน้ำหนัก
+	int totalWeight = 0;
+	for (const LazarusDrop &entry : LazarusDrops)
+		totalWeight += entry.weight;
 
-		if (d.uid == UITEM_INVALID) {
-			CreateSpellBook(pos, PickRandomlyAmong(RandomBookSpells), sendmsg, false);
-			return true;
+	int roll = GenerateRnd(totalWeight);
+	const LazarusDrop *chosen = &LazarusDrops[0];
+	for (const LazarusDrop &entry : LazarusDrops) {
+		if (roll < entry.weight) {
+			chosen = &entry;
+			break;
 		}
+		roll -= entry.weight;
+	}
+	const LazarusDrop &d = *chosen;
 
-		if (ActiveItemCount >= MAXITEMS)
-			return false;
-
-		std::underlying_type_t<_item_indexes> idx = 0;
-		while (AllItemsList[idx].iItemId != UniqueItems[d.uid].UIItemId)
-			idx++;
-
-		int ii = AllocateItem();
-		Item &droppedItem = Items[ii];
-		GetSuperItemSpace(pos, ii);
-		const Point itemPos = droppedItem.position;
-
-		do {
-			droppedItem = {};
-			droppedItem.position = itemPos;
-			SetupAllItems(*MyPlayer, droppedItem, static_cast<_item_indexes>(idx),
-				AdvanceRndSeed(), MonstersData[MT_ADVOCATE].level, 15,
-				/*onlygood=*/true, /*recreate=*/true, /*pregen=*/false);
-			} while (droppedItem._iUid != d.uid);
-
-		if (sendmsg)
-			NetSendCmdPItem(false, CMD_DROPITEM, droppedItem.position, droppedItem);
-
+	if (d.uid == UITEM_INVALID) {
+		CreateSpellBook(pos, PickRandomlyAmong({ SpellID::Teleport, SpellID::Guardian, SpellID::StoneCurse, SpellID::Golem }), sendmsg, false);
 		return true;
 	}
+
+	if (ActiveItemCount >= MAXITEMS)
+		return false;
+
+	std::underlying_type_t<_item_indexes> idx = 0;
+	while (AllItemsList[idx].iItemId != UniqueItems[d.uid].UIItemId)
+		idx++;
+
+	int ii = AllocateItem();
+	Item &droppedItem = Items[ii];
+	GetSuperItemSpace(pos, ii);
+	const Point itemPos = droppedItem.position;
+
+	do {
+		droppedItem = {};
+		droppedItem.position = itemPos;
+		SetupAllItems(*MyPlayer, droppedItem, static_cast<_item_indexes>(idx),
+		    AdvanceRndSeed(), MonstersData[MT_ADVOCATE].level, 15,
+		    /*onlygood=*/true, /*recreate=*/true, /*pregen=*/false);
+	} while (droppedItem._iUid != d.uid);
+
+	if (sendmsg)
+		NetSendCmdPItem(false, CMD_DROPITEM, droppedItem.position, droppedItem);
+
+	return true;
 }
 
 void CreateMagicArmor(Point position, ItemType itemType, int icurs, bool sendmsg, bool delta)
