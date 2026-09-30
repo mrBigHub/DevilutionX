@@ -4009,12 +4009,8 @@ void MonsterDeath(Monster &monster, Direction md, bool sendmsg)
 	SetRndSeed(monster.rndItemSeed);
 
 	// ดรอปพิเศษของ Lazarus
-	bool lazarusSpecialLoot = false;
-	if (monster.ai == MonsterAIID::Lazarus) {
-	lazarusSpecialLoot = SpawnLazarusLoot(monster.position.tile);
-	}
-	if (!lazarusSpecialLoot)
-	SpawnLoot(monster, sendmsg);
+	if (monster.ai != MonsterAIID::Lazarus || !SpawnLazarusLoot(monster.position.tile, sendmsg))
+		SpawnLoot(monster, sendmsg);
 	
 	if (monster.type().type == MT_DIABLO)
 		DiabloDeath(monster, true);

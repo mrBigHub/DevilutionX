@@ -4726,21 +4726,60 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 	if (delta)
 		DeltaAddItem(ii);
 }
-	bool SpawnLazarusLoot(Point position)	//Lazarus Special Drop
-{
-	if (GenerateRnd(3) != 0)
-		return false;
+	struct LazarusDrop {
+		_unique_items uid;
+		int weight;
+};
 
-	switch (GenerateRnd(4)) {
-	case 0: SpawnUnique(UITEM_THINKINGCAP, position, std::nullopt, true); break;
-	case 1: SpawnUnique(UITEM_MINDCRY, position, std::nullopt, true); break;
-	case 2: SpawnUnique(UITEM_NIGHTSCAPE, position, std::nullopt, true); break;
-	default: {
-		constexpr SpellID Books[] = { SpellID::Teleport, SpellID::StoneCurse, SpellID::Golem };
-		CreateSpellBook(position, Books[GenerateRnd(3)], true, false);
-	} break;
+	const LazarusDrop LazarusDrops[] = {
+		{ UITEM_THINKINGCAP, 30 },
+		{ UITEM_NIGHTSCAPE,    30 }, // Naj's Robe
+		{ UITEM_INVALID,     40 }, // แทนหนังสือเวทสุ่ม
+};
+
+	const SpellID RandomBookSpells[] = {
+		SpellID::Teleport,
+		SpellID::Guardian,
+		SpellID::StoneCurse,
+		SpellID::Golem,
+};
+	bool SpawnLazarusLoot(Point pos, bool sendmsg)
+{
+		if (GenerateRnd(100) >= 50)
+			return false;
+
+		// ...เลือก d จาก LazarusDrops ตามน้ำหนักเดิมของคุณ...
+
+		if (d.uid == UITEM_INVALID) {
+			CreateSpellBook(pos, PickRandomlyAmong(RandomBookSpells), sendmsg, false);
+			return true;
+		}
+
+		if (ActiveItemCount >= MAXITEMS)
+			return false;
+
+		std::underlying_type_t<_item_indexes> idx = 0;
+		while (AllItemsList[idx].iItemId != UniqueItems[d.uid].UIItemId)
+			idx++;
+
+		int ii = AllocateItem();
+		Item &droppedItem = Items[ii];
+		GetSuperItemSpace(pos, ii);
+		const Point itemPos = droppedItem.position;
+
+		do {
+			droppedItem = {};
+			droppedItem.position = itemPos;
+			SetupAllItems(*MyPlayer, droppedItem, static_cast<_item_indexes>(idx),
+				AdvanceRndSeed(), MonstersData[MT_ADVOCATE].level, 15,
+				/*onlygood=*/true, /*recreate=*/true, /*pregen=*/false);
+			} while (droppedItem._iUid != d.uid);
+
+		if (sendmsg)
+			NetSendCmdPItem(false, CMD_DROPITEM, droppedItem.position, droppedItem);
+
+		return true;
 	}
-	return true;
 }
 
 void CreateMagicArmor(Point position, ItemType itemType, int icurs, bool sendmsg, bool delta)
