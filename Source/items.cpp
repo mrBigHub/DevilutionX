@@ -4758,40 +4758,7 @@ bool SpawnLazarusLoot(Point pos, bool sendmsg) // Lazarus special drop
 	}
 	const LazarusDrop &d = *chosen;
 
-if (ActiveItemCount >= MAXITEMS)
-		return false;
-
-	// guard 2: the unique id must exist
-	if (static_cast<size_t>(d.uid) >= UniqueItems.size())
-		return false;
-
-	// guard 1: the base item must exist
-	size_t idx = 0;
-	while (idx < AllItemsList.size() && AllItemsList[idx].iItemId != UniqueItems[d.uid].UIItemId)
-		idx++;
-	if (idx >= AllItemsList.size())
-		return false;
-
-	int ii = AllocateItem();
-	Item &droppedItem = Items[ii];
-	GetSuperItemSpace(pos, ii);
-	const Point itemPos = droppedItem.position;
-
-	// guard 3: don't loop forever
-	int tries = 0;
-	do {
-		if (++tries > 10000)
-			return false;
-		droppedItem = {};
-		droppedItem.position = itemPos;
-		SetupAllItems(*MyPlayer, droppedItem, static_cast<_item_indexes>(idx),
-		    AdvanceRndSeed(), MonstersData[MT_ADVOCATE].level, 15,
-		    /*onlygood=*/true, /*recreate=*/true, /*pregen=*/false);
-	} while (droppedItem._iUid != d.uid);
-
-	if (sendmsg)
-		NetSendCmdPItem(false, CMD_DROPITEM, droppedItem.position, droppedItem);
-
+SpawnUnique(d.uid, pos, sendmsg);
 	return true;
 }
 
