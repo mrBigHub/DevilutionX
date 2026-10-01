@@ -4760,6 +4760,42 @@ bool SpawnLazarusLoot(Point pos, bool sendmsg)
 		return true;
 	}
 
+	if (ActiveItemCount >= MAXITEMS)
+		return false;
+
+	if (static_cast<size_t>(d.uid) >= UniqueItems.size())
+		return false;
+
+	size_t idx = 0;
+	while (idx < AllItemsList.size() && AllItemsList[idx].iItemId != UniqueItems[d.uid].UIItemId)
+		idx++;
+	if (idx >= AllItemsList.size())
+		return false;
+
+	// reroll on a temporary item first
+	Item candidate = {};
+	int tries = 0;
+	do {
+		if (++tries > 10000)
+			return false;
+		candidate = {};
+		SetupAllItems(*MyPlayer, candidate, static_cast<_item_indexes>(idx),
+		    AdvanceRndSeed(), MonstersData[MT_ADVOCATE].level, 15,
+		    /*onlygood=*/true, /*pregen=*/false);
+	} while (candidate._iUid != d.uid);
+
+	SetupItem(candidate);
+
+	// only now take a ground slot
+	int ii = AllocateItem();
+	Items[ii] = candidate;
+	GetSuperItemSpace(pos, ii);
+
+	if (sendmsg)
+		NetSendCmdPItem(false, CMD_DROPITEM, Items[ii].position, Items[ii]);
+
+	return true;
+
 	/* ...your new code from "if (ActiveItemCount >= MAXITEMS)" to "return true;" ... */
 }
 
