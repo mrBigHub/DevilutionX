@@ -4726,23 +4726,20 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 	if (delta)
 		DeltaAddItem(ii);
 }
-	struct LazarusDrop {
+struct LazarusDrop {
 	_unique_items uid;
 	int weight;
 };
 
 const LazarusDrop LazarusDrops[] = {
-	{ UITEM_THINKINGCAP, 30 },
-	{ UITEM_NIGHTSCAPE, 30 }, // Naj's Robe
-	{ UITEM_INVALID, 40 },    // หนังสือเวทสุ่ม
+	{ UITEM_THINKINGCAP, 100 },
 };
 
-bool SpawnLazarusLoot(Point pos, bool sendmsg) // Lazarus special drop
+bool SpawnLazarusLoot(Point pos, bool sendmsg)
 {
-	if (GenerateRnd(100) >= 50)
+	if (GenerateRnd(100) >= 100)
 		return false;
 
-	// เลือกของตามน้ำหนัก
 	int totalWeight = 0;
 	for (const LazarusDrop &entry : LazarusDrops)
 		totalWeight += entry.weight;
@@ -4758,8 +4755,12 @@ bool SpawnLazarusLoot(Point pos, bool sendmsg) // Lazarus special drop
 	}
 	const LazarusDrop &d = *chosen;
 
-SpawnUnique(d.uid, pos, sendmsg);
-	return true;
+	if (d.uid == UITEM_INVALID) {
+		CreateSpellBook(pos, PickRandomlyAmong({ SpellID::Teleport, SpellID::Guardian, SpellID::StoneCurse, SpellID::Golem }), sendmsg, false);
+		return true;
+	}
+
+	/* ...your new code from "if (ActiveItemCount >= MAXITEMS)" to "return true;" ... */
 }
 
 void CreateMagicArmor(Point position, ItemType itemType, int icurs, bool sendmsg, bool delta)
