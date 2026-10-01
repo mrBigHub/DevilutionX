@@ -4758,24 +4758,30 @@ bool SpawnLazarusLoot(Point pos, bool sendmsg) // Lazarus special drop
 	}
 	const LazarusDrop &d = *chosen;
 
-	if (d.uid == UITEM_INVALID) {
-		CreateSpellBook(pos, PickRandomlyAmong({ SpellID::Teleport, SpellID::Guardian, SpellID::StoneCurse, SpellID::Golem }), sendmsg, false);
-		return true;
-	}
-
-	if (ActiveItemCount >= MAXITEMS)
+if (ActiveItemCount >= MAXITEMS)
 		return false;
 
-	std::underlying_type_t<_item_indexes> idx = 0;
-	while (AllItemsList[idx].iItemId != UniqueItems[d.uid].UIItemId)
+	// guard 2: the unique id must exist
+	if (static_cast<size_t>(d.uid) >= UniqueItems.size())
+		return false;
+
+	// guard 1: the base item must exist
+	size_t idx = 0;
+	while (idx < AllItemsList.size() && AllItemsList[idx].iItemId != UniqueItems[d.uid].UIItemId)
 		idx++;
+	if (idx >= AllItemsList.size())
+		return false;
 
 	int ii = AllocateItem();
 	Item &droppedItem = Items[ii];
 	GetSuperItemSpace(pos, ii);
 	const Point itemPos = droppedItem.position;
 
+	// guard 3: don't loop forever
+	int tries = 0;
 	do {
+		if (++tries > 10000)
+			return false;
 		droppedItem = {};
 		droppedItem.position = itemPos;
 		SetupAllItems(*MyPlayer, droppedItem, static_cast<_item_indexes>(idx),
