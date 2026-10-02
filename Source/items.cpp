@@ -4726,20 +4726,25 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 	if (delta)
 		DeltaAddItem(ii);
 }
+enum class LazarusDropKind { Normal, Unique, Book };
+
 struct LazarusDrop {
+	LazarusDropKind kind;
 	_unique_items uid;
+	SpellID spell;
 	int weight;
 };
 
 const LazarusDrop LazarusDrops[] = {
-	{ UITEM_THINKINGCAP, 100 },
+	{ LazarusDropKind::Normal, UITEM_INVALID, SpellID::Null, 40 },
+	{ LazarusDropKind::Unique, UITEM_THINKINGCAP, SpellID::Null, 15 },
+	{ LazarusDropKind::Unique, UITEM_NIGHTSCAPE, SpellID::Null, 15 },
+	{ LazarusDropKind::Book, UITEM_INVALID, SpellID::Teleport, 15 },
+	{ LazarusDropKind::Book, UITEM_INVALID, SpellID::StoneCurse, 15 },
 };
 
 bool SpawnLazarusLoot(Point pos, bool sendmsg)
 {
-	if (GenerateRnd(100) >= 100)
-		return false;
-
 	int totalWeight = 0;
 	for (const LazarusDrop &entry : LazarusDrops)
 		totalWeight += entry.weight;
@@ -4755,8 +4760,11 @@ bool SpawnLazarusLoot(Point pos, bool sendmsg)
 	}
 	const LazarusDrop &d = *chosen;
 
-	if (d.uid == UITEM_INVALID) {
-		CreateSpellBook(pos, PickRandomlyAmong({ SpellID::Teleport, SpellID::Guardian, SpellID::StoneCurse, SpellID::Golem }), sendmsg, false);
+	if (d.kind == LazarusDropKind::Normal)
+		return false; // MonsterDeath will do his normal drop
+
+	if (d.kind == LazarusDropKind::Book) {
+		CreateSpellBook(pos, d.spell, sendmsg, false);
 		return true;
 	}
 
