@@ -361,7 +361,9 @@ public:
 	uint8_t pDiabloKillLevel;
 	uint16_t wReflections;
 	ItemSpecialEffectHf pDamAcFlags;
-
+	uint8_t holyArmorLevel; // 0 = ไม่ได้ใช้งาน
+	int32_t holyArmorTicks; // เวลาที่เหลือ (20 tick = 1 วินาที)
+	
 	[[nodiscard]] std::string_view name() const
 	{
 		return _pName;

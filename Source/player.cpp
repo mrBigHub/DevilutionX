@@ -2365,7 +2365,9 @@ void CreatePlayer(Player &player, HeroClass c)
 	player.pManaShield = false;
 	player.pDamAcFlags = ItemSpecialEffectHf::None;
 	player.wReflections = 0;
-
+	player.holyArmorLevel = 0;
+	player.holyArmorTicks = 0;
+	
 	InitDungMsgs(player);
 	CreatePlrItems(player);
 	SetRndSeed(0);
@@ -2492,6 +2494,8 @@ void InitPlayer(Player &player, bool firstTime)
 		player.queuedSpell.spellType = player._pRSplType;
 		player.pManaShield = false;
 		player.wReflections = 0;
+		player.holyArmorLevel = 0;
+		player.holyArmorTicks = 0;
 	}
 
 	player.lightId = NO_LIGHT;
@@ -2827,6 +2831,10 @@ void ApplyPlrDamage(DamageType damageType, Player &player, int dam, int minHP /*
 	int totalDamage = (dam << 6) + frac;
 	if (&player == MyPlayer && !player.hasNoLife()) {
 		lua::OnPlayerTakeDamage(&player, totalDamage, static_cast<int>(damageType));
+			if (dam > 0 && player.holyArmorLevel > 0) {
+		totalDamage -= player.holyArmorLevel << 6;
+		if (totalDamage < 0)
+			totalDamage = 0;
 	}
 	if (totalDamage > 0 && player.pManaShield && HasNoneOf(player._pIFlags, ItemSpecialEffect::NoMana)) {
 		const uint8_t manaShieldLevel = player._pSplLvl[static_cast<int8_t>(SpellID::ManaShield)];
@@ -3028,6 +3036,10 @@ void ProcessPlayers()
 				}
 				if (player.pManaShield && HasAnyOf(player._pIFlags, ItemSpecialEffect::NoMana)) {
 					NetSendCmd(true, CMD_REMSHIELD);
+				if (player.holyArmorTicks > 0) {
+					player.holyArmorTicks--;
+					if (player.holyArmorTicks == 0)
+						player.holyArmorLevel = 0;
 				}
 			}
 
