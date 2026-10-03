@@ -609,35 +609,49 @@ void CalcItemValue(Item &item)
 	item._iIvalue = std::max(v, 1);
 }
 
+// เวทที่หนังสือขายเฉพาะที่ Pepin ไม่ดรอป ไม่ขายที่ Adria
+// (SpellID::Invisibility คือช่องที่เปลี่ยนเป็น Holy Armor)
+const std::array<SpellID, 3> PepinBookSpells = { SpellID::Healing, SpellID::HealOther, SpellID::Invisibility };
+SpellID ForcedBookSpell = SpellID::Invalid;
+
+bool IsPepinOnlyBook(SpellID spell)
+{
+	return std::find(PepinBookSpells.begin(), PepinBookSpells.end(), spell) != PepinBookSpells.end();
+}
+
 void GetBookSpell(Item &item, int lvl)
 {
 	if (lvl == 0)
 		lvl = 1;
 
-	int rv = GenerateRnd(static_cast<int32_t>(SpellsData.size())) + 1;
-
-	if (gbIsSpawn && lvl > 5)
-		lvl = 5;
-
-	int s = static_cast<int8_t>(SpellID::Firebolt);
 	SpellID bs = SpellID::Firebolt;
-	while (rv > 0) {
-		const int sLevel = GetSpellBookLevel(static_cast<SpellID>(s));
-		if (sLevel != -1 && lvl >= sLevel) {
-			rv--;
-			bs = static_cast<SpellID>(s);
+	if (ForcedBookSpell != SpellID::Invalid) {
+		bs = ForcedBookSpell;
+	} else {
+		int rv = GenerateRnd(static_cast<int32_t>(SpellsData.size())) + 1;
+
+		if (gbIsSpawn && lvl > 5)
+			lvl = 5;
+
+		int s = static_cast<int8_t>(SpellID::Firebolt);
+		while (rv > 0) {
+			const int sLevel = GetSpellBookLevel(static_cast<SpellID>(s));
+			if (sLevel != -1 && lvl >= sLevel && !IsPepinOnlyBook(static_cast<SpellID>(s))) {
+				rv--;
+				bs = static_cast<SpellID>(s);
+			}
+			s++;
+			if (!gbIsMultiplayer) {
+				if (s == static_cast<int8_t>(SpellID::Resurrect))
+					s = static_cast<int8_t>(SpellID::Telekinesis);
+			}
+			if (!gbIsMultiplayer) {
+				if (s == static_cast<int8_t>(SpellID::HealOther))
+					s = static_cast<int8_t>(SpellID::BloodStar);
+			}
+			if (static_cast<size_t>(s) == SpellsData.size())
+				s = 1;
 		}
-		s++;
-		if (!gbIsMultiplayer) {
-			if (s == static_cast<int8_t>(SpellID::Resurrect))
-				s = static_cast<int8_t>(SpellID::Telekinesis);
-		}
-		if (!gbIsMultiplayer) {
-			if (s == static_cast<int8_t>(SpellID::HealOther))
-				s = static_cast<int8_t>(SpellID::BloodStar);
-		}
-		if (static_cast<size_t>(s) == SpellsData.size())
-			s = 1;
 	}
 	const std::string_view spellName = GetSpellData(bs).sNameText;
 	const size_t iNameLen = std::string_view(item._iName).size();
@@ -2139,6 +2153,10 @@ void RecreateHealerItem(const Player &player, Item &item, _item_indexes idx, int
 {
 	if (IsAnyOf(idx, IDI_HEAL, IDI_FULLHEAL, IDI_RESURRECT)) {
 		GetItemAttrs(item, idx, lvl);
+	} else if (idx == IDI_BOOK1) {
+		ForcedBookSpell = PepinBookSpells[static_cast<uint32_t>(iseed) % PepinBookSpells.size()];
+		GetItemAttrs(item, idx, lvl);
+		ForcedBookSpell = SpellID::Invalid;
 	} else {
 		SetRndSeed(iseed);
 		const _item_indexes itype = RndHealerItem(player, lvl);
