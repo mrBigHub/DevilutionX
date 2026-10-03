@@ -341,6 +341,7 @@ void AddTownPortal(Missile &missile, AddMissileParameter &parameter);
 void AddFlashBottom(Missile &missile, AddMissileParameter &parameter);
 void AddFlashTop(Missile &missile, AddMissileParameter &parameter);
 void AddManaShield(Missile &missile, AddMissileParameter &parameter);
+void AddHolyArmor(Missile &missile, AddMissileParameter &parameter);
 void AddFlameWave(Missile &missile, AddMissileParameter &parameter);
 
 /**

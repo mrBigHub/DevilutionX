@@ -2157,6 +2157,20 @@ void AddFlashTop(Missile &missile, AddMissileParameter & /*parameter*/)
 	missile.duration = 19;
 }
 
+void AddHolyArmor(Missile &missile, AddMissileParameter & /*parameter*/)
+{
+	missile._miDelFlag = true;
+
+	Player &player = Players[missile._misource];
+	// Holy Armor ใช้ช่องเวท Invisibility ที่ไม่มีใครใช้
+	const int spellLevel = std::min(player.GetSpellLevel(SpellID::Invisibility), 15);
+	if (spellLevel <= 0)
+		return;
+
+	player.holyArmorLevel = static_cast<uint8_t>(spellLevel);
+	player.holyArmorTicks = spellLevel * 20 * 20; // 20 วินาที ต่อเลเวล
+}
+
 void AddManaShield(Missile &missile, AddMissileParameter &parameter)
 {
 	missile._miDelFlag = true;
