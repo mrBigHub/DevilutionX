@@ -2831,7 +2831,8 @@ void ApplyPlrDamage(DamageType damageType, Player &player, int dam, int minHP /*
 	int totalDamage = (dam << 6) + frac;
 	if (&player == MyPlayer && !player.hasNoLife()) {
 		lua::OnPlayerTakeDamage(&player, totalDamage, static_cast<int>(damageType));
-			if (dam > 0 && player.holyArmorLevel > 0) {
+	}
+	if (dam > 0 && player.holyArmorLevel > 0) {
 		totalDamage -= player.holyArmorLevel << 6;
 		if (totalDamage < 0)
 			totalDamage = 0;
