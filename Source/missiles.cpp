@@ -2167,8 +2167,8 @@ void AddHolyArmor(Missile &missile, AddMissileParameter & /*parameter*/)
 	if (spellLevel <= 0)
 		return;
 
-	player.holyArmorLevel = static_cast<uint8_t>(spellLevel);
-	player.holyArmorTicks = spellLevel * 20 * 20; // 20 วินาที ต่อเลเวล
+	player.holyArmorLevel = 15; // TEST
+	player.holyArmorTicks = 300 * 20; // TEST 5 นาที
 }
 
 void AddManaShield(Missile &missile, AddMissileParameter &parameter)
