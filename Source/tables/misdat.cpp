@@ -221,6 +221,7 @@ std::expected<MissileData::AddFn, std::string> ParseMissileAddFn(std::string_vie
 	if (value == "AddFlashBottom") return AddFlashBottom;
 	if (value == "AddFlashTop") return AddFlashTop;
 	if (value == "AddManaShield") return AddManaShield;
+	if (value == "AddHolyArmor") return AddHolyArmor;
 	if (value == "AddFlameWave") return AddFlameWave;
 	if (value == "AddGuardian") return AddGuardian;
 	if (value == "AddChainLightning") return AddChainLightning;
