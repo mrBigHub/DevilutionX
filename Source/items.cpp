@@ -4667,10 +4667,25 @@ void SpawnHealer(int lvl)
 {
 	constexpr size_t PinnedItemCount = NumHealerPinnedItems;
 	constexpr std::array<_item_indexes, PinnedItemCount + 1> PinnedItemTypes = { IDI_HEAL, IDI_FULLHEAL, IDI_RESURRECT };
+	constexpr int PepinBookChance = 100; // ตอนทดสอบ 100 ใช้จริงลดเป็น 50
+
+	// เลือกว่าเล่มไหนวางขายรอบนี้ (Heal Other เฉพาะมัลติเพลเยอร์)
+	std::array<bool, 3> sellBook = {
+		RandomIntLessThan(100) < PepinBookChance,
+		gbIsMultiplayer && RandomIntLessThan(100) < PepinBookChance,
+		RandomIntLessThan(100) < PepinBookChance
+	};
+	size_t bookTotal = 0;
+	for (const bool sell : sellBook) {
+		if (sell)
+			bookTotal++;
+	}
+
 	const auto itemCount = static_cast<size_t>(RandomIntBetween(10, gbIsHellfire ? NumHealerItemsHf : NumHealerItems));
 	HealerItems.clear();
 
-	for (size_t i = 0; i < itemCount; i++) {
+	// ช่องที่เหลือจากหนังสือใช้สำหรับของปกติ
+	for (size_t i = 0; i < itemCount - bookTotal; i++) {
 		Item item = {};
 
 		if (i < PinnedItemCount || (gbIsMultiplayer && i < NumHealerPinnedItemsMp)) {
@@ -4687,6 +4702,21 @@ void SpawnHealer(int lvl)
 			item._iIdentified = true;
 		}
 
+		HealerItems.push_back(item);
+	}
+
+	// หนังสือ: seed หารเหลือเศษ = ตัวบอกว่าเป็นเวทไหน ใช้สร้างซ้ำตอนโหลดเซฟ
+	for (size_t b = 0; b < PepinBookSpells.size(); b++) {
+		if (!sellBook[b])
+			continue;
+		Item item = {};
+		const auto seed = static_cast<uint32_t>(AdvanceRndSeed());
+		item._iSeed = seed - (seed % PepinBookSpells.size()) + b;
+		ForcedBookSpell = PepinBookSpells[b];
+		GetItemAttrs(item, IDI_BOOK1, lvl);
+		ForcedBookSpell = SpellID::Invalid;
+		item._iCreateInfo = lvl | CF_HEALER;
+		item._iIdentified = true;
 		HealerItems.push_back(item);
 	}
 
