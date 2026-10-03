@@ -3031,18 +3031,19 @@ void ProcessPlayers()
 				SyncPlrKill(player, DeathReason::Unknown);
 			}
 
-			if (&player == MyPlayer) {
-				if (HasAnyOf(player._pIFlags, ItemSpecialEffect::DrainLife) && leveltype != DTYPE_TOWN) {
-					ApplyPlrDamage(DamageType::Physical, player, 0, 0, 4);
-				}
-				if (player.pManaShield && HasAnyOf(player._pIFlags, ItemSpecialEffect::NoMana)) {
-					NetSendCmd(true, CMD_REMSHIELD);
-				if (player.holyArmorTicks > 0) {
-					player.holyArmorTicks--;
-					if (player.holyArmorTicks == 0)
-						player.holyArmorLevel = 0;
-				}
+		if (&player == MyPlayer) {
+			if (HasAnyOf(player._pIFlags, ItemSpecialEffect::DrainLife) && leveltype != DTYPE_TOWN) {
+				ApplyPlrDamage(DamageType::Physical, player, 0, 0, 4);
 			}
+			if (player.pManaShield && HasAnyOf(player._pIFlags, ItemSpecialEffect::NoMana)) {
+				NetSendCmd(true, CMD_REMSHIELD);
+			}
+			if (player.holyArmorTicks > 0) {
+				player.holyArmorTicks--;
+				if (player.holyArmorTicks == 0)
+					player.holyArmorLevel = 0;
+			}
+		}
 
 			bool tplayer = false;
 			do {
