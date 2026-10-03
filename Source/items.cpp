@@ -4957,12 +4957,17 @@ void Item::updateRequiredStatsCacheForPlayer(const Player &player)
 	if (_itype == ItemType::Misc && _iMiscId == IMISC_BOOK) {
 		_iMinMag = GetSpellData(_iSpell).minInt;
 		int8_t spellLevel = player._pSplLvl[static_cast<int8_t>(_iSpell)];
-		while (spellLevel != 0) {
-			_iMinMag += 20 * _iMinMag / 100;
-			spellLevel--;
-			if (_iMinMag + 20 * _iMinMag / 100 > 255) {
-				_iMinMag = 255;
-				spellLevel = 0;
+		if (_iSpell == SpellID::Invisibility) {
+			// Holy Armor: เพิ่ม 10 ต่อเลเวล (เวทอื่นใช้สูตรเดิมด้านล่าง)
+			_iMinMag = static_cast<decltype(_iMinMag)>(std::min<int>(GetSpellData(_iSpell).minInt + 10 * spellLevel, 255));
+		} else {
+			while (spellLevel != 0) {
+				_iMinMag += 20 * _iMinMag / 100;
+				spellLevel--;
+				if (_iMinMag + 20 * _iMinMag / 100 > 255) {
+					_iMinMag = 255;
+					spellLevel = 0;
+				}
 			}
 		}
 	}
