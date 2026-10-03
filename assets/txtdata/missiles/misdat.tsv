@@ -31,7 +31,7 @@ DoomSerpents			SpellDoomSerpents		DoomSerpents	Magic,Invisible
 FireOnly					FireWall	Fire	
 StoneCurse	AddStoneCurse	ProcessStoneCurse	SpellStoneCurse			Magic,Invisible	
 BloodRitual						Physical	
-Invisibility			SpellInvisibility			Physical,Invisible	
+Invisibility	AddHolyArmor		SpellManaShield		ManaShield	Magic,Invisible	
 Golem	AddGolem		SpellGolem			Physical,Invisible	
 Etherealize			SpellEtherealize		Etherealize	Physical	
 Spurt					Spurt	Physical	
