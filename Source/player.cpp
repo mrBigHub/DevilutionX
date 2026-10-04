@@ -3037,11 +3037,12 @@ void ProcessPlayers()
 			if (player.pManaShield && HasAnyOf(player._pIFlags, ItemSpecialEffect::NoMana)) {
 				NetSendCmd(true, CMD_REMSHIELD);
 			}
-		if (player.holyArmorTicks > 0) {
-			player.holyArmorTicks--;
-			if (player.holyArmorTicks == 0) {
-				player.holyArmorLevel = 0;
-				CalcPlrInv(player, false);
+			if (player.holyArmorTicks > 0) {
+				player.holyArmorTicks--;
+				if (player.holyArmorTicks == 0) {
+					player.holyArmorLevel = 0;
+					CalcPlrInv(player, false);
+				}
 			}
 		}
 
