@@ -2169,6 +2169,7 @@ void AddHolyArmor(Missile &missile, AddMissileParameter & /*parameter*/)
 
 	player.holyArmorLevel = 15; // TEST
 	player.holyArmorTicks = 300 * 20; // TEST 5 นาที
+	CalcPlrInv(player, false);
 }
 
 void AddManaShield(Missile &missile, AddMissileParameter &parameter)

@@ -2832,10 +2832,9 @@ void ApplyPlrDamage(DamageType damageType, Player &player, int dam, int minHP /*
 	if (&player == MyPlayer && !player.hasNoLife()) {
 		lua::OnPlayerTakeDamage(&player, totalDamage, static_cast<int>(damageType));
 	}
-	if (dam > 0 && player.holyArmorLevel > 0) {
-		totalDamage -= player.holyArmorLevel << 6;
-		if (totalDamage < 0)
-			totalDamage = 0;
+	if (player.holyArmorLevel > 0 && totalDamage >= (1 << 6)) {
+		const int reduced = totalDamage - (player.holyArmorLevel << 6);
+		totalDamage = std::max(reduced, 0); // TEST: ไม่มีขั้นต่ำ
 	}
 	if (totalDamage > 0 && player.pManaShield && HasNoneOf(player._pIFlags, ItemSpecialEffect::NoMana)) {
 		const uint8_t manaShieldLevel = player._pSplLvl[static_cast<int8_t>(SpellID::ManaShield)];
@@ -3042,6 +3041,7 @@ void ProcessPlayers()
 				player.holyArmorTicks--;
 				if (player.holyArmorTicks == 0)
 					player.holyArmorLevel = 0;
+					CalcPlrInv(player, false);
 			}
 		}
 

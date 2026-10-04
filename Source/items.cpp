@@ -2895,6 +2895,8 @@ void CalcPlrItemVals(Player &player, bool loadgfx)
 	player.pDamAcFlags = damAcFlags;
 	player._pIBonusDamMod = damMod;
 	player._pIGetHit = getHit;
+		if (player.holyArmorLevel > 0)
+		lightRadius += 3; // แสงเรือง Holy Armor
 	CalcPlrLightRadius(player, lightRadius);
 	CalcPlrDamageMod(player);
 	player._pISpells = spells;
