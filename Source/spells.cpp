@@ -120,7 +120,10 @@ int GetManaAmount(const Player &player, SpellID sn)
 		adj = sl * (GetSpellData(SpellID::Resurrect).sManaCost / 8);
 	}
 
-	if (sn == SpellID::Healing || sn == SpellID::HealOther) {
+	if (sn == SpellID::Invisibility) {
+		// Holy Armor: 2 มานาต่อเลเวลเวท
+		ma = 2 * std::max(player.GetSpellLevel(sn), 1);
+	} else if (sn == SpellID::Healing || sn == SpellID::HealOther) {
 		ma = (GetSpellData(SpellID::Healing).sManaCost + 2 * player.getCharacterLevel() - adj);
 	} else if (GetSpellData(sn).sManaCost == 255) {
 		ma = (player._pMaxManaBase >> 6) - adj;

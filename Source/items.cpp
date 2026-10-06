@@ -611,7 +611,7 @@ void CalcItemValue(Item &item)
 
 // เวทที่หนังสือขายเฉพาะที่ Pepin ไม่ดรอป ไม่ขายที่ Adria
 // (SpellID::Invisibility คือช่องที่เปลี่ยนเป็น Holy Armor)
-const std::array<SpellID, 3> PepinBookSpells = { SpellID::Healing, SpellID::HealOther, SpellID::Invisibility };
+constexpr std::array<SpellID, 5> PepinBookSpells = { SpellID::Healing, SpellID::HealOther, SpellID::HolyBolt, SpellID::TownPortal, SpellID::Invisibility };
 SpellID ForcedBookSpell = SpellID::Invalid;
 
 bool IsPepinOnlyBook(SpellID spell)
@@ -2895,8 +2895,6 @@ void CalcPlrItemVals(Player &player, bool loadgfx)
 	player.pDamAcFlags = damAcFlags;
 	player._pIBonusDamMod = damMod;
 	player._pIGetHit = getHit;
-		if (player.holyArmorLevel > 0)
-		lightRadius += 3; // แสงเรือง Holy Armor
 	CalcPlrLightRadius(player, lightRadius);
 	CalcPlrDamageMod(player);
 	player._pISpells = spells;
@@ -4669,18 +4667,22 @@ void SpawnHealer(int lvl)
 {
 	constexpr size_t PinnedItemCount = NumHealerPinnedItems;
 	constexpr std::array<_item_indexes, PinnedItemCount + 1> PinnedItemTypes = { IDI_HEAL, IDI_FULLHEAL, IDI_RESURRECT };
-	constexpr int PepinBookChance = 100; // ตอนทดสอบ 100 ใช้จริงลดเป็น 50
+	constexpr size_t PepinBooksPerStock = 2; // จำนวนหนังสือที่วางขายต่อรอบ
 
-	// เลือกว่าเล่มไหนวางขายรอบนี้ (Heal Other เฉพาะมัลติเพลเยอร์)
-	std::array<bool, 3> sellBook = {
-		RandomIntLessThan(100) < PepinBookChance,
-		gbIsMultiplayer && RandomIntLessThan(100) < PepinBookChance,
-		RandomIntLessThan(100) < PepinBookChance
-	};
+	// สุ่มเลือกหนังสือที่ไม่ซ้ำกัน (Heal Other เฉพาะมัลติเพลเยอร์)
+	std::vector<size_t> candidates;
+	for (size_t b = 0; b < PepinBookSpells.size(); b++) {
+		if (PepinBookSpells[b] == SpellID::HealOther && !gbIsMultiplayer)
+			continue;
+		candidates.push_back(b);
+	}
+	std::array<bool, PepinBookSpells.size()> sellBook = {};
 	size_t bookTotal = 0;
-	for (const bool sell : sellBook) {
-		if (sell)
-			bookTotal++;
+	while (bookTotal < PepinBooksPerStock && !candidates.empty()) {
+		const auto pick = static_cast<size_t>(RandomIntLessThan(static_cast<int>(candidates.size())));
+		sellBook[candidates[pick]] = true;
+		candidates.erase(candidates.begin() + static_cast<std::ptrdiff_t>(pick));
+		bookTotal++;
 	}
 
 	const auto itemCount = static_cast<size_t>(RandomIntBetween(10, gbIsHellfire ? NumHealerItemsHf : NumHealerItems));

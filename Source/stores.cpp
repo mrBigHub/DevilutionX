@@ -1061,7 +1061,7 @@ void StartHealerBuy()
 
 	CurrentItemIndex = 0;
 	for (Item &item : HealerItems) {
-		item._iStatFlag = MyPlayer->CanUseItem(item);
+		item.updateRequiredStatsCacheForPlayer(*MyPlayer);
 		CurrentItemIndex++;
 	}
 

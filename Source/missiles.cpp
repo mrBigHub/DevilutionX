@@ -2167,8 +2167,12 @@ void AddHolyArmor(Missile &missile, AddMissileParameter & /*parameter*/)
 	if (spellLevel <= 0)
 		return;
 
-	player.holyArmorLevel = 15; // TEST
-	player.holyArmorTicks = 20 * 20; // TEST 20 วินาที
+	const int spellLevel = std::min(player.GetSpellLevel(SpellID::Invisibility), 15);
+	if (spellLevel <= 0)
+		return;
+
+	player.holyArmorLevel = static_cast<uint8_t>(spellLevel);
+	player.holyArmorTicks = spellLevel * 20 * 20; // 20 วินาที ต่อเลเวล
 	CalcPlrInv(player, false);
 }
 

@@ -2834,7 +2834,7 @@ void ApplyPlrDamage(DamageType damageType, Player &player, int dam, int minHP /*
 	}
 	if (player.holyArmorLevel > 0 && totalDamage >= (1 << 6)) {
 		const int reduced = totalDamage - (player.holyArmorLevel << 6);
-		totalDamage = std::max(reduced, 0); // TEST: ไม่มีขั้นต่ำ
+		totalDamage = std::max(reduced, 1 << 6); 
 	}
 	if (totalDamage > 0 && player.pManaShield && HasNoneOf(player._pIFlags, ItemSpecialEffect::NoMana)) {
 		const uint8_t manaShieldLevel = player._pSplLvl[static_cast<int8_t>(SpellID::ManaShield)];
