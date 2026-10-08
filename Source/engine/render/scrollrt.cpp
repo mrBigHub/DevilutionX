@@ -5,6 +5,7 @@
  */
 #include "engine/render/scrollrt.h"
 
+#include <array>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
@@ -400,6 +401,27 @@ void DrawMonster(const Surface &out, Point tilePosition, Point targetBufferPosit
 }
 
 /**
+ * @brief TRN table that brightens the player sprite while Holy Armor is active.
+ */
+const uint8_t *GetHolyArmorTRN()
+{
+	static const std::array<uint8_t, 256> trn = [] {
+		std::array<uint8_t, 256> t;
+		for (int i = 0; i < 256; ++i) {
+			if (i == 0) {
+				t[i] = 0; // keep transparent
+				continue;
+			}
+			const int group = i & ~15;
+			const int shade = i & 15;
+			t[i] = static_cast<uint8_t>(group + std::max(shade - 6, 0));
+		}
+		return t;
+	}();
+	return trn.data();
+}
+
+/**
  * @brief Helper for rendering a specific player icon (Mana Shield or Reflect)
  */
 void DrawPlayerIconHelper(const Surface &out, MissileGraphicID missileGraphicId, Point position, const Player &player, bool infraVision, int lightTableIndex)
@@ -476,7 +498,10 @@ void DrawPlayer(const Surface &out, const Player &player, Point tilePosition, Po
 		ClxDrawOutlineSkipColorZero(out, GetPlayerOutlineColor(player.getId()), spriteBufferPosition, sprite);
 
 	if (&player == MyPlayer && IsNoneOf(leveltype, DTYPE_NEST, DTYPE_CRYPT)) {
-		ClxDraw(out, spriteBufferPosition, sprite);
+		if (player.holyArmorTicks > 0)
+			ClxDrawTRN(out, spriteBufferPosition, sprite, GetHolyArmorTRN());
+		else
+			ClxDraw(out, spriteBufferPosition, sprite);
 		DrawPlayerIcons(out, player, targetBufferPosition, /*infraVision=*/false, lightTableIndex);
 		return;
 	}
@@ -488,6 +513,8 @@ void DrawPlayer(const Surface &out, const Player &player, Point tilePosition, Po
 	}
 
 	lightTableIndex = std::max(lightTableIndex - 5, 0);
+	if (player.holyArmorTicks > 0)
+		lightTableIndex = 0;
 	ClxDrawLight(out, spriteBufferPosition, sprite, lightTableIndex);
 	DrawPlayerIcons(out, player, targetBufferPosition, /*infraVision=*/false, lightTableIndex);
 }
