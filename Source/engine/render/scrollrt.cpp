@@ -414,7 +414,7 @@ const uint8_t *GetHolyArmorTRN()
 			}
 			const int group = i & ~15;
 			const int shade = i & 15;
-			t[i] = static_cast<uint8_t>(group + std::max(shade - 6, 0));
+			t[i] = static_cast<uint8_t>(group + std::max(shade - 4, 0));
 		}
 		return t;
 	}();
