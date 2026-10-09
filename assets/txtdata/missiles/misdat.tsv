@@ -67,3 +67,9 @@ WeaponExplosion	AddWeaponExplosion	ProcessWeaponExplosion				Physical
 RedPortal	AddRedPortal	ProcessRedPortal	SpellPortal		RedPortal	Physical	
 DiabloApocalypseBoom	AddApocalypseBoom	ProcessApocalypseBoom			DiabloApocalypseBoom	Physical	
 DiabloApocalypse	AddDiabloApocalypse					Physical,Invisible	
+BloodStarCrimson	AddGenericMagicMissile	ProcessGenericProjectile			BloodStarCrimson	Physical	Blockable
+BloodStarCrimsonExplosion	AddMissileExplosion	ProcessMissileExplosion			BloodStarCrimsonExplosion	Physical	
+ApocBoomFire	AddApocalypseBoom	ProcessApocalypseBoom			DiabloApocalypseBoom	Fire	
+ApocBoomPhysical 	AddApocalypseBoom	ProcessApocalypseBoom			DiabloApocalypseBoom	Physical	
+ApocBoomLightning 	AddApocalypseBoom	ProcessApocalypseBoom			DiabloApocalypseBoom	Lightning	
+ApocBoomMagic 	AddApocalypseBoom	ProcessApocalypseBoom			DiabloApocalypseBoom	Magic	
