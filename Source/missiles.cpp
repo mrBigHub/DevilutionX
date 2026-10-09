@@ -2025,7 +2025,7 @@ void AddLightning(Missile &missile, AddMissileParameter &parameter)
 
 void AddMissileExplosion(Missile &missile, AddMissileParameter &parameter)
 {
-	if (missile._micaster != TARGET_MONSTERS && missile._misource >= 0) {
+	if (missile._mitype != MissileID::BloodStarCrimsonExplosion && missile._micaster != TARGET_MONSTERS && missile._misource >= 0) {	// upd here
 		switch (Monsters[missile._misource].type().type) {
 		case MT_SUCCUBUS:
 			missile.setAnimation(MissileGraphicID::BloodStarExplosion);
@@ -2301,12 +2301,12 @@ void AddGenericMagicMissile(Missile &missile, AddMissileParameter &parameter)
 	if (missile.position.start == dst) {
 		dst += parameter.midir;
 	}
-	UpdateMissileVelocity(missile, dst, 16);
+	UpdateMissileVelocity(missile, dst, missile._mitype == MissileID::BloodStarCrimson ? 32 : 16);	// upd here
 	missile.duration = 256;
 	missile.var1 = missile.position.start.x;
 	missile.var2 = missile.position.start.y;
 	missile._mlid = AddLight(missile.position.start, 8);
-	if (missile._micaster != TARGET_MONSTERS && missile._misource > 0) {
+	if (missile._mitype != MissileID::BloodStarCrimson && missile._micaster != TARGET_MONSTERS && missile._misource > 0) {	//upd here
 		const Monster &monster = Monsters[missile._misource];
 		if (monster.type().type == MT_SUCCUBUS)
 			missile.setAnimation(MissileGraphicID::BloodStar);
@@ -2811,13 +2811,18 @@ void AddRedPortal(Missile &missile, AddMissileParameter & /*parameter*/)
 
 void AddDiabloApocalypse(Missile &missile, AddMissileParameter & /*parameter*/)
 {
+	MissileID boomType = MissileID::DiabloApocalypseBoom;
+	if (missile._micaster != TARGET_MONSTERS && missile._misource >= 0 && Monsters[missile._misource].type().type != MT_DIABLO) {
+		const MissileID boomTypes[] = { MissileID::ApocBoomFire, MissileID::ApocBoomPhysical, MissileID::ApocBoomLightning, MissileID::ApocBoomMagic };
+		boomType = boomTypes[GenerateRnd(4)];
+	}
 	for (const Player &player : Players) {
 		if (!player.plractive)
 			continue;
 		if (!LineClearMissile(missile.position.start, player.position.future))
 			continue;
 
-		AddMissile({ 0, 0 }, player.position.future, Direction::South, MissileID::DiabloApocalypseBoom, missile._micaster, missile._misource, missile._midam, 0);
+		AddMissile({ 0, 0 }, player.position.future, Direction::South, boomType, missile._micaster, missile._misource, missile._midam, 0);
 	}
 	missile._miDelFlag = true;
 }
@@ -3008,6 +3013,9 @@ void ProcessGenericProjectile(Missile &missile)
 			break;
 		case MissileID::BloodStar:
 			AddMissile(missile.position.tile, dst, dir, MissileID::BloodStarExplosion, missile._micaster, missile._misource, 0, 0, &missile);
+			break;
+		case MissileID::BloodStarCrimson:	// upd here
+			AddMissile(missile.position.tile, dst, dir, MissileID::BloodStarCrimsonExplosion, missile._micaster, missile._misource, 0, 0, &missile);
 			break;
 		case MissileID::Acid:
 			AddMissile(missile.position.tile, dst, dir, MissileID::AcidSplat, missile._micaster, missile._misource, 0, 0, &missile);
