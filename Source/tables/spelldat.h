@@ -206,8 +206,14 @@ enum class MissileID : int8_t {
 	BlueExplosion,
 	BlueExplosion2,
 	OrangeExplosion,
-
-	LAST = OrangeExplosion,
+	BloodStarCrimson,
+	BloodStarCrimsonExplosion,
+	ApocBoomFire,
+	ApocBoomPhysical,
+	ApocBoomLightning,
+	ApocBoomMagic,
+	
+	LAST = ApocBoomMagic,
 	Null = -1,
 	// clang-format on
 };
