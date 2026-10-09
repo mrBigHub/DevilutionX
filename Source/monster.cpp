@@ -1973,6 +1973,13 @@ MissileID GetMissileType(MonsterAIID ai)
 	}
 }
 
+MissileID GetMissileType(const Monster &monster)
+{
+	if (monster.type().type == MT_LSUCCUBUS)
+		return MissileID::BloodStarCrimson;
+	return GetMissileType(monster.ai);
+}
+	
 void AiRanged(Monster &monster)
 {
 	if (monster.mode != MonsterMode::Stand) {
@@ -1992,7 +1999,7 @@ void AiRanged(Monster &monster)
 		}
 		if (monster.mode == MonsterMode::Stand) {
 			if (LineClearMovingMissile(monster.position.tile, monster.enemyPosition)) {
-				const MissileID missileType = GetMissileType(monster.ai);
+				const MissileID missileType = GetMissileType(monster);	// update here
 				if (monster.ai == MonsterAIID::AcidUnique)
 					StartRangedSpecialAttack(monster, missileType, 0);
 				else
@@ -2021,7 +2028,7 @@ void AiRangedAvoidance(Monster &monster)
 		MonstCheckDoors(monster);
 	const int lessmissiles = (monster.ai == MonsterAIID::Acid) ? 1 : 0;
 	const int dam = (monster.ai == MonsterAIID::Diablo) ? 40 : 0;
-	const MissileID missileType = GetMissileType(monster.ai);
+	const MissileID missileType = GetMissileType(monster);	// update here
 	int v = GenerateRnd(10000);
 	const unsigned distanceToEnemy = monster.distanceToEnemy();
 	if (distanceToEnemy >= 2 && monster.activeForTicks == UINT8_MAX && dTransVal[monster.position.tile.x][monster.position.tile.y] == dTransVal[monster.enemyPosition.x][monster.enemyPosition.y]) {
@@ -3619,7 +3626,10 @@ std::expected<void, std::string> InitMonsterGFX(CMonster &monsterType, MonsterSp
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BlueFlareExplosion2).LoadGFX());
 	if (mtype == MT_DIABLO)
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::DiabloApocalypseBoom).LoadGFX());
-
+	if (mtype == MT_LSUCCUBUS) {
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimson).LoadGFX());
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimsonExplosion).LoadGFX());
+		
 	return {};
 }
 
