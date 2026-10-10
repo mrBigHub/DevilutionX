@@ -126,8 +126,11 @@ std::expected<MissileGraphicID, std::string> ParseMissileGraphicID(std::string_v
 	if (value == "BlueFlare2") return MissileGraphicID::BlueFlare2;
 	if (value == "OrangeFlareExplosion") return MissileGraphicID::OrangeFlareExplosion;
 	if (value == "BlueFlareExplosion2") return MissileGraphicID::BlueFlareExplosion2;
-	if (value == "BloodStarCrimson") return MissileGraphicID::BloodStarCrimson;
+	if (value == "BloodStarCrimson") return MissileGraphicID::BloodStarCrimson;		// add here
 	if (value == "BloodStarCrimsonExplosion") return MissileGraphicID::BloodStarCrimsonExplosion;
+	if (value == "ApocBoomPhysical") return MissileGraphicID::ApocBoomPhysical;
+	if (value == "ApocBoomLightning") return MissileGraphicID::ApocBoomLightning;
+	if (value == "ApocBoomMagic") return MissileGraphicID::ApocBoomMagic;
 	return std::unexpected("Unknown enum value");
 }
 
