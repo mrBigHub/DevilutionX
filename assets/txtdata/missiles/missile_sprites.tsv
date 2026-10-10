@@ -45,8 +45,8 @@ BloodStarYellow	96	16	scubmisc	1	MonsterOwned	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	16
 BloodStarYellowExplosion	128	32	scbsexpc	1	MonsterOwned	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6
 BloodStarRed	96	16	scubmisd	1	MonsterOwned	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
 BloodStarRedExplosion	128	32	scbsexpd	1	MonsterOwned	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6
-BloodStarCrimson	128	32	flareB	1	MonsterOwned	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
-BloodStarCrimsonExplosion	128	32	flareBexp	1	MonsterOwned	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7
-ApocBoomPhysical	160	48	fireplarB	1	MonsterOwned	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17
-ApocBoomLightning	160	48	fireplarC	1	MonsterOwned	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17
-ApocBoomMagic	160	48	fireplarM	1	MonsterOwned	1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17
+BloodStarCrimson	128	32	flareB	1		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+BloodStarCrimsonExplosion	128	32	flareBexp	1		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0	7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7
+ApocBoomPhysical	160	48	fireplarB	1		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17
+ApocBoomLightning	160	48	fireplarC	1		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17
+ApocBoomMagic	160	48	fireplarM	1		1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17
