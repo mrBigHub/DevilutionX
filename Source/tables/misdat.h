@@ -79,6 +79,11 @@ enum class MissileGraphicID : uint8_t {
 	BloodStarYellowExplosion,
 	BloodStarRed,
 	BloodStarRedExplosion,
+	BloodStarCrimson,		// add here
+	BloodStarCrimsonExplosion,
+	ApocBoomPhysical,
+	ApocBoomLightning,
+	ApocBoomMagic,
 	HorkSpawn,
 	Reflect,
 	OrangeFlare,
@@ -92,11 +97,6 @@ enum class MissileGraphicID : uint8_t {
 	BlueFlare2,
 	OrangeFlareExplosion,
 	BlueFlareExplosion2,
-	BloodStarCrimson,
-	BloodStarCrimsonExplosion,
-	ApocBoomPhysical,
-	ApocBoomLightning,
-	ApocBoomMagic,
 	None,
 };
 
