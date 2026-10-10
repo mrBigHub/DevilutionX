@@ -3626,9 +3626,15 @@ std::expected<void, std::string> InitMonsterGFX(CMonster &monsterType, MonsterSp
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BlueFlareExplosion2).LoadGFX());
 	if (mtype == MT_DIABLO)
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::DiabloApocalypseBoom).LoadGFX());
-	if (mtype == MT_LSUCCUBUS) {
+	if (mtype == MT_LSUCCUBUS) {		// add here
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimson).LoadGFX());
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimsonExplosion).LoadGFX());
+	}	
+		if (mtype == MT_STORMCLAW || mtype == MT_GBALROG) {
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::DiabloApocalypseBoom).LoadGFX());
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomPhysical).LoadGFX());
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomLightning).LoadGFX());
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomMagic).LoadGFX());
 	}
 	
 	return {};
