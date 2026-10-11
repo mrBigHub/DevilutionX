@@ -3627,7 +3627,6 @@ std::expected<void, std::string> InitMonsterGFX(CMonster &monsterType, MonsterSp
 	if (mtype == MT_DIABLO)	{
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::DiabloApocalypseBoom).LoadGFX());
 	}
-	
 	if (mtype == MT_LSUCCUBUS) {		// add here
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimson).LoadGFX());
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimsonExplosion).LoadGFX());
