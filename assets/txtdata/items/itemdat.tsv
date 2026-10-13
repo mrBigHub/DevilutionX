@@ -66,10 +66,10 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	1	Armor	Armor	SCALE_MAIL	MediumArmor	NONE	Scale Mail	Mail	15	60	0	0	23	28	35	0	0		NONE	Null	false	2300
 	1	Armor	Armor	BREAST_PLATE	HeavyArmor	BREASTPLATE	Breast Plate	Plate	16	80	0	0	20	24	40	0	0		NONE	Null	false	2800
 	1	Armor	Armor	SPLINT_MAIL	MediumArmor	NONE	Splint Mail	Mail	17	65	0	0	30	35	40	0	0		NONE	Null	false	3250
-	1	Armor	Armor	FIELD_PLATE	HeavyArmor	PLATEMAIL	Plate Mail	Plate	19	75	0	0	42	50	60	0	0		NONE	Null	false	4600
-	1	Armor	Armor	FIELD_PLATE	HeavyArmor	NONE	Field Plate	Plate	21	80	0	0	40	45	65	0	0		NONE	Null	false	5800
-	1	Armor	Armor	GOTHIC_PLATE	HeavyArmor	GothicPlate	Gothic Plate	Plate	23	100	0	0	50	60	80	0	0		NONE	Null	false	8000
-	1	Armor	Armor	FULL_PLATE_MAIL	HeavyArmor	FULLPLATE	Full Plate Mail	Plate	25	90	0	0	60	75	90	0	0		NONE	Null	false	6500
+	1	Armor	Armor	FIELD_PLATE	HeavyArmor	PLATEMAIL	Plate Mail	Plate	19	75	0	0	40	50	60	0	0		NONE	Null	false	4600
+	1	Armor	Armor	FIELD_PLATE_NEW	HeavyArmor	NONE	Field Plate	Plate	21	80	0	0	51	55	65	0	0		NONE	Null	false	5800
+	1	Armor	Armor	GOTHIC_PLATE	HeavyArmor	GothicPlate	Gothic Plate	Plate	23	100	0	0	56	65	80	0	0		NONE	Null	false	8000
+	1	Armor	Armor	FULL_PLATE_MAIL	HeavyArmor	FULLPLATE	Full Plate Mail	Plate	25	90	0	0	66	75	90	0	0		NONE	Null	false	6500
 	1	Armor	One-handed	BUCKLER	Shield	BUCKLER	Buckler	Shield	1	16	0	0	1	5	0	0	0		NONE	Null	false	30
 	1	Armor	One-handed	SMALL_SHIELD	Shield	SMALLSHIELD	Small Shield	Shield	5	24	0	0	3	8	25	0	0		NONE	Null	false	90
 	1	Armor	One-handed	LARGE_SHIELD	Shield	LARGESHIELD	Large Shield	Shield	9	32	0	0	5	10	40	0	0		NONE	Null	false	200
@@ -143,7 +143,7 @@ IDI_GREATSWR	1	Weapon	Two-handed	GREAT_SWORD	Sword	GREATSWR	Great Sword	Sword	17
 	1	Weapon	One-handed	FLAIL	Mace	FLAIL	Flail	Flail	7	36	2	12	0	0	30	0	0		NONE	Null	false	500
 	1	Weapon	Two-handed	MAUL	Mace	MAUL	Maul	Maul	10	50	6	20	0	0	55	0	0		NONE	Null	false	900
 	2	Weapon	Two-handed	SHORT_BOW	Bow	SHORTBOW	Short Bow	Bow	1	30	1	4	0	0	0	0	0		NONE	Null	false	100
-	2	Weapon	Two-handed	HUNTERS_BOW	Bow	HUNTBOW	Hunter's Bow	Bow	3	40	2	5	0	0	20	0	35		NONE	Null	false	350
+	2	Weapon	Two-handed	HUNTERS_BOW_NEW	Bow	HUNTBOW	Hunter's Bow	Bow	3	40	2	5	0	0	20	0	35		NONE	Null	false	350
 	2	Weapon	Two-handed	HUNTERS_BOW	Bow	LONGBOW	Long Bow	Bow	5	35	1	6	0	0	25	0	30		NONE	Null	false	250
 IDI_COMPBOW	2	Weapon	Two-handed	COMPOSITE_BOW	Bow	COMPBOW	Composite Bow	Bow	7	45	3	6	0	0	25	0	40		NONE	Null	false	600
 IDI_SHORT_BATTLE_BOW	2	Weapon	Two-handed	SHORT_BATTLE_BOW	Bow	SBATTLEBOW	Short Battle Bow	Bow	9	45	3	7	0	0	30	0	50		NONE	Null	false	750
@@ -153,7 +153,7 @@ IDI_SHORT_BATTLE_BOW	2	Weapon	Two-handed	SHORT_BATTLE_BOW	Bow	SBATTLEBOW	Short B
 	1	Weapon	Two-handed	SHORT_STAFF	Staff	SHORTSTAFF	Short Staff	Staff	1	25	2	4	0	0	0	0	0		STAFF	Null	false	30
 	1	Weapon	Two-handed	LONG_STAFF	Staff	LONGSTAFF	Long Staff	Staff	4	35	4	8	0	0	0	0	0		STAFF	Null	false	100
 	1	Weapon	Two-handed	COMPOSITE_STAFF	Staff	COMPSTAFF	Composite Staff	Staff	6	45	5	10	0	0	0	0	0		STAFF	Null	false	500
-	2	Weapon	Two-handed	SHORT_STAFF	Staff	QUARSTAFF	Quarter Staff	Staff	9	55	6	12	0	0	20	0	0		STAFF	Null	false	1000
+	2	Weapon	Two-handed	QUARTER_STAFF	Staff	QUARSTAFF	Quarter Staff	Staff	9	55	6	12	0	0	20	0	0		STAFF	Null	false	1000
 	1	Weapon	Two-handed	WAR_STAFF	Staff	WARSTAFF	War Staff	Staff	12	75	8	16	0	0	30	0	0		STAFF	Null	false	1500
 	1	Misc	Ring	RING	Ring	RING	Ring	Ring	5	0	0	0	0	0	0	0	0		RING	Null	false	1000
 	1	Misc	Ring	RING	Ring	RING	Ring	Ring	10	0	0	0	0	0	0	0	0		RING	Null	false	1000
