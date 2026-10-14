@@ -285,7 +285,7 @@ enum item_cursor_graphic : uint8_t {
 	ICURS_HUNTERS_BOW_NEW             = 227,	// add here
 	ICURS_QUARTER_STAFF               = 228,
 	ICURS_FIELD_PLATE_NEW             = 229,
-	
+
 	ICURS_DEFAULT = static_cast<uint8_t>(-1),
 	// clang-format on
 };
