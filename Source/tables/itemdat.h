@@ -282,9 +282,9 @@ enum item_cursor_graphic : uint8_t {
 	ICURS_BLITZEN                     = 219,
 	ICURS_DEMON_PLATE_ARMOR           = 225,
 	ICURS_BOVINE                      = 226,
-	ICURS_HUNTERS_BOW_NEW             = 241,	// add here
-	ICURS_QUARTER_STAFF               = 242,
-	ICURS_FIELD_PLATE_NEW             = 243,
+	ICURS_HUNTERS_BOW_NEW             = 227,	// add here
+	ICURS_QUARTER_STAFF               = 228,
+	ICURS_FIELD_PLATE_NEW             = 229,
 	
 	ICURS_DEFAULT = static_cast<uint8_t>(-1),
 	// clang-format on
