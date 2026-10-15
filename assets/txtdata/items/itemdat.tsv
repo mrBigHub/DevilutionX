@@ -143,7 +143,7 @@ IDI_GREATSWR	1	Weapon	Two-handed	GREAT_SWORD	Sword	GREATSWR	Great Sword	Sword	17
 	1	Weapon	One-handed	FLAIL	Mace	FLAIL	Flail	Flail	7	36	2	12	0	0	30	0	0		NONE	Null	false	500
 	1	Weapon	Two-handed	MAUL	Mace	MAUL	Maul	Maul	10	50	6	20	0	0	55	0	0		NONE	Null	false	900
 	2	Weapon	Two-handed	SHORT_BOW	Bow	SHORTBOW	Short Bow	Bow	1	30	1	4	0	0	0	0	0		NONE	Null	false	100
-	2	Weapon	Two-handed	BOVINE	Bow	HUNTBOW	Hunter's Bow	Bow	3	40	2	5	0	0	20	0	35		NONE	Null	false	350
+	2	Weapon	Two-handed	HUNTERS_BOW_NEW	Bow	HUNTBOW	Hunter's Bow	Bow	3	40	2	5	0	0	20	0	35		NONE	Null	false	350
 	2	Weapon	Two-handed	HUNTERS_BOW	Bow	LONGBOW	Long Bow	Bow	5	35	1	6	0	0	25	0	30		NONE	Null	false	250
 IDI_COMPBOW	2	Weapon	Two-handed	COMPOSITE_BOW	Bow	COMPBOW	Composite Bow	Bow	7	45	3	6	0	0	25	0	40		NONE	Null	false	600
 IDI_SHORT_BATTLE_BOW	2	Weapon	Two-handed	SHORT_BATTLE_BOW	Bow	SBATTLEBOW	Short Battle Bow	Bow	9	45	3	7	0	0	30	0	50		NONE	Null	false	750
