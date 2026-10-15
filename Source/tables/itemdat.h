@@ -282,8 +282,6 @@ enum item_cursor_graphic : uint8_t {
 	ICURS_BLITZEN                     = 219,
 	ICURS_DEMON_PLATE_ARMOR           = 225,
 	ICURS_BOVINE                      = 226,
-	ICURS_something01                 = 227,
-	ICURS_something02                 = 228,
 	ICURS_HUNTERS_BOW_NEW             = 229,	// add here
 	ICURS_QUARTER_STAFF               = 230,
 	ICURS_FIELD_PLATE_NEW             = 231,
