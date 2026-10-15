@@ -248,6 +248,8 @@ std::expected<item_cursor_graphic, std::string> ParseItemCursorGraphic(std::stri
 	if (value == "BLITZEN") return ICURS_BLITZEN;
 	if (value == "DEMON_PLATE_ARMOR") return ICURS_DEMON_PLATE_ARMOR;
 	if (value == "BOVINE") return ICURS_BOVINE;
+	if (value == "EMPTY01") return ICURS_EMPTY01;	// old one
+	if (value == "EMPTY02") return ICURS_EMPTY02;	// old two
 	if (value == "HUNTERS_BOW_NEW") return ICURS_HUNTERS_BOW_NEW;	// add here
 	if (value == "QUARTER_STAFF") return ICURS_QUARTER_STAFF;
 	if (value == "FIELD_PLATE_NEW") return ICURS_FIELD_PLATE_NEW;
