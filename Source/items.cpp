@@ -4789,11 +4789,7 @@ struct LazarusDrop {
 };
 
 const LazarusDrop LazarusDrops[] = {
-	{ LazarusDropKind::Normal, UITEM_INVALID, SpellID::Null, 40 },
-	{ LazarusDropKind::Unique, UITEM_THINKINGCAP, SpellID::Null, 15 },
-	{ LazarusDropKind::Unique, UITEM_NIGHTSCAPE, SpellID::Null, 15 },
-	{ LazarusDropKind::Book, UITEM_INVALID, SpellID::Teleport, 15 },
-	{ LazarusDropKind::Book, UITEM_INVALID, SpellID::StoneCurse, 15 },
+{ LazarusDropKind::Unique, UITEM_INFRAVISIONHELM, SpellID::Null, 100 },
 };
 
 bool SpawnLazarusLoot(Point pos, bool sendmsg)
