@@ -127,7 +127,7 @@ int8_t ItemCAnimTbl[] = {
 	8, 8, 8, 17, 0, 6, 8, 11, 11, 3,
 	3, 1, 6, 6, 6, 1, 8, 6, 11, 3,
 	6, 8, 1, 6, 6, 17, 40, 0, 0, 3,
-	11, 17,
+	11, 17, 5, 12
 };
 
 /** Maps of drop sounds effect of placing the item in the inventory. */
