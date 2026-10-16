@@ -253,6 +253,8 @@ std::expected<item_cursor_graphic, std::string> ParseItemCursorGraphic(std::stri
 	if (value == "HUNTERS_BOW_NEW") return ICURS_HUNTERS_BOW_NEW;	// add here
 	if (value == "QUARTER_STAFF") return ICURS_QUARTER_STAFF;
 	if (value == "FIELD_PLATE_NEW") return ICURS_FIELD_PLATE_NEW;
+	if (value == "INFRAVISION_HELM") return ICURS_INFRAVISION_HELM;
+	if (value == "SPEED_BOOTS") return ICURS_SPEED_BOOTS;
 	if (value == "") return ICURS_DEFAULT;
 
 	// also support providing the item cursor icon frame number directly

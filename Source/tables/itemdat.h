@@ -288,7 +288,9 @@ enum item_cursor_graphic : uint8_t {
 	ICURS_HUNTERS_BOW_NEW             = 229,
 	ICURS_QUARTER_STAFF               = 230,
 	ICURS_FIELD_PLATE_NEW             = 231,
-
+	ICURS_INFRAVISION_HELM            = 232,
+	ICURS_SPEED_BOOTS                 = 233,
+	
 	ICURS_DEFAULT = static_cast<uint8_t>(-1),
 	// clang-format on
 };
@@ -384,7 +386,7 @@ enum unique_base_item : int8_t {
 	UITYPE_LGTFORGE,
 	UITYPE_LAZSTAFF,
 	UITYPE_BOVINE,
-	NUM_DEFAULT_UITYPES,
+	UITYPE_LAZSTAFF,
 	NUM_MAX_UITYPES = std::numeric_limits<int8_t>::max(),
 	UITYPE_INVALID = -1,
 };
