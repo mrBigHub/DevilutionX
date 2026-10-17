@@ -3509,5 +3509,13 @@ bool TestPlayerDoGotHit(Player &player)
 	return DoGotHit(player);
 }
 #endif
+bool Player::HasInfravision() const
+{
+	if (_pInfraFlag)
+		return true;
+	const Item &helm = InvBody[INVLOC_HEAD];
+	return !helm.isEmpty() && helm._iMagical == ITEM_QUALITY_UNIQUE
+	    && helm._iUid == UITEM_INFRAVISIONHELM && helm._iStatFlag;
+}
 
 } // namespace devilution

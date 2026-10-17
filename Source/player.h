@@ -867,6 +867,7 @@ public:
 	{
 		return plrIsOnSetLevel && IsArenaLevel(static_cast<_setlevels>(plrlevel));
 	}
+	[[nodiscard]] bool HasInfravision() const;	// add new
 	void setLevel(uint8_t level)
 	{
 		this->plrlevel = level;
