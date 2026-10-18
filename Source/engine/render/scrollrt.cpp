@@ -374,6 +374,21 @@ void DrawMissile(const Surface &out, WorldTilePosition tilePosition, Point targe
  * @param targetBufferPosition Output buffer coordinates
  * @param monster Monster reference
  */
+ constexpr int InfravisionRange = 10;
+
+/** Infravision (spell or helm): only nearby tiles with a clear line, no seeing through walls. */
+bool InfravisionSeesTile(Point tilePosition)
+{
+	const Player &player = *MyPlayer;
+	if (!player.HasInfravision())
+		return false;
+	const Point from = player.position.tile;
+	const int dx = std::abs(tilePosition.x - from.x);
+	const int dy = std::abs(tilePosition.y - from.y);
+	if (std::max(dx, dy) > InfravisionRange)
+		return false;
+	return LineClearMissile(from, tilePosition);
+}
 void DrawMonster(const Surface &out, Point tilePosition, Point targetBufferPosition, const Monster &monster, int lightTableIndex)
 {
 	if (!monster.animInfo.sprites) {
@@ -392,7 +407,7 @@ void DrawMonster(const Surface &out, Point tilePosition, Point targetBufferPosit
 		trn = monster.uniqueMonsterTRN.get();
 	if (monster.mode == MonsterMode::Petrified)
 		trn = GetStoneTRN();
-	if (MyPlayer->HasInfravision() && lightTableIndex > 8)
+	if (InfravisionSeesTile(tilePosition) && lightTableIndex > 8)
 		trn = GetInfravisionTRN();
 	if (trn != nullptr)
 		ClxDrawTRN(out, targetBufferPosition, sprite, trn);
@@ -487,7 +502,7 @@ uint8_t GetPlayerOutlineColor(int id)
  */
 void DrawPlayer(const Surface &out, const Player &player, Point tilePosition, Point targetBufferPosition, int lightTableIndex)
 {
-	if (!IsTileLit(tilePosition) && !MyPlayer->HasInfravision() && !MyPlayer->isOnArenaLevel() && leveltype != DTYPE_TOWN) {
+	if (!IsTileLit(tilePosition) && !InfravisionSeesTile(tilePosition) && !MyPlayer->isOnArenaLevel() && leveltype != DTYPE_TOWN) {
 		return;
 	}
 
@@ -506,7 +521,7 @@ void DrawPlayer(const Surface &out, const Player &player, Point tilePosition, Po
 		return;
 	}
 
-	if (!IsTileLit(tilePosition) || ((MyPlayer->HasInfravision() || MyPlayer->isOnArenaLevel()) && lightTableIndex > 8)) {
+	if (!IsTileLit(tilePosition) || ((InfravisionSeesTile(tilePosition) || MyPlayer->isOnArenaLevel()) && lightTableIndex > 8)) {
 		ClxDrawTRN(out, spriteBufferPosition, sprite, GetInfravisionTRN());
 		DrawPlayerIcons(out, player, targetBufferPosition, /*infraVision=*/true, lightTableIndex);
 		return;
@@ -772,7 +787,7 @@ void DrawMonsterHelper(const Surface &out, Point tilePosition, Point targetBuffe
 		return;
 	}
 
-	if (!IsTileLit(tilePosition) && !(MyPlayer->HasInfravision() && IsFloor(tilePosition))) {
+	if (!IsTileLit(tilePosition) && !(InfravisionSeesTile(tilePosition) && IsFloor(tilePosition))) {
 		return;
 	}
 
@@ -781,10 +796,13 @@ void DrawMonsterHelper(const Surface &out, Point tilePosition, Point targetBuffe
 		return;
 	}
 
-	const auto &monster = Monsters[mi];
-	if ((monster.flags & MFLAG_HIDDEN) != 0) {
+		const auto &monster = Monsters[mi];
+	// undead give off no heat: unseen in the dark
+	if (!IsTileLit(tilePosition) && monster.data().monsterClass == MonsterClass::Undead)
 		return;
-	}
+	// stealth monsters can be seen by infravision (in range, clear line)
+	if ((monster.flags & MFLAG_HIDDEN) != 0 && !InfravisionSeesTile(tilePosition))
+		return;
 
 	const ClxSprite sprite = monster.animInfo.currentSprite();
 	const Displacement offset = monster.getRenderingOffset(sprite);
