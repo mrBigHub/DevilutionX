@@ -374,7 +374,7 @@ void DrawMissile(const Surface &out, WorldTilePosition tilePosition, Point targe
  * @param targetBufferPosition Output buffer coordinates
  * @param monster Monster reference
  */
- constexpr int InfravisionRange = 10;
+ constexpr int InfravisionRange = 11;
 
 /** Infravision (spell or helm): only nearby tiles with a clear line, no seeing through walls. */
 bool InfravisionSeesTile(Point tilePosition)
@@ -407,7 +407,8 @@ void DrawMonster(const Surface &out, Point tilePosition, Point targetBufferPosit
 		trn = monster.uniqueMonsterTRN.get();
 	if (monster.mode == MonsterMode::Petrified)
 		trn = GetStoneTRN();
-	if (InfravisionSeesTile(tilePosition) && lightTableIndex > 8)
+	if (InfravisionSeesTile(tilePosition) && lightTableIndex > 8
+	    && monster.data().monsterClass != MonsterClass::Undead)
 		trn = GetInfravisionTRN();
 	if (trn != nullptr)
 		ClxDrawTRN(out, targetBufferPosition, sprite, trn);
