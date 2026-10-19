@@ -801,8 +801,9 @@ void DrawMonsterHelper(const Surface &out, Point tilePosition, Point targetBuffe
 	// undead give off no heat: unseen in the dark
 	if (!IsTileLit(tilePosition) && monster.data().monsterClass == MonsterClass::Undead)
 		return;
-	// stealth monsters can be seen by infravision (in range, clear line)
-	if ((monster.flags & MFLAG_HIDDEN) != 0 && !InfravisionSeesTile(tilePosition))
+	// stealth monsters can be seen by infravision (in range, clear line), but not undead (no heat)
+	if ((monster.flags & MFLAG_HIDDEN) != 0
+	    && (!InfravisionSeesTile(tilePosition) || monster.data().monsterClass == MonsterClass::Undead))
 		return;
 
 	const ClxSprite sprite = monster.animInfo.currentSprite();
