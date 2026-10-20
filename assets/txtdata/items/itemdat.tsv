@@ -74,7 +74,7 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	1	Armor	One-handed	SMALL_SHIELD	Shield	SMALLSHIELD	Small Shield	Shield	5	24	0	0	3	8	25	0	0		NONE	Null	false	90
 	1	Armor	One-handed	LARGE_SHIELD	Shield	LARGESHIELD	Large Shield	Shield	9	32	0	0	5	10	40	0	0		NONE	Null	false	200
 	1	Armor	One-handed	KITE_SHIELD	Shield	KITESHIELD	Kite Shield	Shield	14	40	0	0	8	15	50	0	0		NONE	Null	false	400
-	1	Armor	One-handed	TOWER_SHIELD	Shield	GOTHSHIELD	Tower Shield	Shield	20	50	0	0	12	20	60	0	0		NONE	Null	false	850
+	1	Armor	One-handed	TOWER_SHIELD	Shield	TOWERSHIELD	Tower Shield	Shield	20	50	0	0	12	20	60	0	0		NONE	Null	false	1000
 IDI_GOTHSHIELD	1	Armor	One-handed	GOTHIC_SHIELD	Shield	GOTHSHIELD	Gothic Shield	Shield	23	60	0	0	14	18	80	0	0		NONE	Null	false	2300
 	1	Misc	Unequippable	POTION_OF_HEALING	Misc	NONE	Potion of Healing		1	0	0	0	0	0	0	0	0		HEAL	Null	true	50
 	1	Misc	Unequippable	POTION_OF_FULL_HEALING	Misc	NONE	Potion of Full Healing		1	0	0	0	0	0	0	0	0		FULLHEAL	Null	true	150
