@@ -4779,7 +4779,7 @@ void CreateSpellBook(Point position, SpellID ispell, bool sendmsg, bool delta)
 	if (delta)
 		DeltaAddItem(ii);
 }
-enum class LazarusDropKind { Normal, Unique, Book };
+enum class LazarusDropKind { Normal, Unique, Book };	// force drop unique
 
 struct LazarusDrop {
 	LazarusDropKind kind;
@@ -4858,6 +4858,68 @@ bool SpawnLazarusLoot(Point pos, bool sendmsg)
 	return true;
 
 	/* ...your new code from "if (ActiveItemCount >= MAXITEMS)" to "return true;" ... */
+}
+
+// ดรอปยูนีคที่กำหนดไว้ (ใช้วิธีเดียวกับ Lazarus)
+bool SpawnForcedUnique(Point pos, _unique_items uid, bool sendmsg)
+{
+	if (ActiveItemCount >= MAXITEMS)
+		return false;
+
+	if (static_cast<size_t>(uid) >= UniqueItems.size())
+		return false;
+
+	size_t idx = 0;
+	while (idx < AllItemsList.size() && AllItemsList[idx].iItemId != UniqueItems[uid].UIItemId)
+		idx++;
+	if (idx >= AllItemsList.size())
+		return false;
+
+	Item candidate = {};
+	int tries = 0;
+	do {
+		if (++tries > 10000)
+			return false;
+		candidate = {};
+		SetupAllItems(*MyPlayer, candidate, static_cast<_item_indexes>(idx),
+		    AdvanceRndSeed(), MonstersData[MT_ADVOCATE].level, 15,
+		    /*onlygood=*/true, /*pregen=*/false);
+	} while (candidate._iUid != uid);
+
+	SetupItem(candidate);
+
+	int ii = AllocateItem();
+	Items[ii] = candidate;
+	GetSuperItemSpace(pos, ii);
+
+	if (sendmsg)
+		NetSendCmdPItem(false, CMD_DROPITEM, Items[ii].position, Items[ii]);
+
+	return true;
+}
+
+// ตัวตัดสินว่ามอนสเตอร์ตัวไหนดรอปพิเศษ
+bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
+{
+	constexpr int SpeedBootsDropPercent = 100; // ปรับโอกาสดรอปได้ที่นี่
+	constexpr int InfravisionHelmDropPercent = 100;
+
+	if (monster.ai == MonsterAIID::Lazarus)
+		return SpawnLazarusLoot(monster.position.tile, sendmsg);
+
+	if (monster.isUnique() && monster.type().type == MT_GBALROG) {
+		if (GenerateRnd(100) < SpeedBootsDropPercent)
+			return SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg);
+		return false;
+	}
+
+	if (monster.isUnique() && monster.type().type == MT_BSKEL) {
+		if (GenerateRnd(100) < InfravisionHelmDropPercent)
+			return SpawnForcedUnique(monster.position.tile, UITEM_INFRAVISIONHELM, sendmsg);
+		return false;
+	}
+
+	return false;
 }
 
 void CreateMagicArmor(Point position, ItemType itemType, int icurs, bool sendmsg, bool delta)
