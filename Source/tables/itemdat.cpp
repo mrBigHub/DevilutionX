@@ -407,6 +407,7 @@ std::expected<ItemSpecialEffect, std::string> ParseItemSpecialEffect(std::string
 	if (value == "Thorns") return ItemSpecialEffect::Thorns;
 	if (value == "NoMana") return ItemSpecialEffect::NoMana;
 	if (value == "HalfTrapDamage") return ItemSpecialEffect::HalfTrapDamage;
+		if (value == "FastWalk") return ItemSpecialEffect::FastWalk;	// add new here
 	if (value == "TripleDemonDamage") return ItemSpecialEffect::TripleDemonDamage;
 	if (value == "ZeroResistance") return ItemSpecialEffect::ZeroResistance;
 	return std::unexpected("Unknown enum value");

@@ -418,6 +418,7 @@ enum class ItemSpecialEffect : uint32_t {
 	Thorns                 = 1 << 26,
 	NoMana                 = 1 << 27,
 	HalfTrapDamage         = 1 << 28,
+	FastWalk               = 1 << 29,
 	TripleDemonDamage      = 1 << 30,
 	ZeroResistance         = 1U << 31,
 	// clang-format on
