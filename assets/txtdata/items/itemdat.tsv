@@ -47,7 +47,7 @@ IDI_NOTE3	0	Quest	Unequippable	TORN_NOTE_3	Misc	NONE	Torn Note 3		0	0	0	0	0	0	0	
 IDI_FULLNOTE	0	Quest	Unequippable	RECONSTRUCTED_NOTE	Misc	NONE	Reconstructed Note		0	0	0	0	0	0	0	0	0		NOTE	Null	true	0
 IDI_BROWNSUIT	0	Quest	Unequippable	BROWN_SUIT	Misc	NONE	Brown Suit		0	0	0	0	0	0	0	0	0		NONE	Null	false	0
 IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0	0		NONE	Null	false	0
-	1	Armor	Helm	CAP	Helm	NONE	Cap	Cap	1	15	0	0	1	3	0	0	0		NONE	Null	false	15
+	1	Armor	Helm	CAP	Helm	CAP	Cap	Cap	1	15	0	0	1	3	0	0	0		NONE	Null	false	15
 	1	Armor	Helm	SKULL_CAP	Helm	SKULLCAP	Skull Cap	Cap	4	20	0	0	2	4	0	0	0		NONE	Null	false	25
 	1	Armor	Helm	HELM	Helm	HELM	Helm	Helm	8	30	0	0	4	6	25	0	0		NONE	Null	false	40
 	1	Armor	Helm	FULL_HELM	Helm	FULLHELM	Full Helm	Helm	12	35	0	0	6	8	35	0	0		NONE	Null	false	90
