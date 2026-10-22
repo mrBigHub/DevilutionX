@@ -142,11 +142,14 @@ void HandleWalkMode(Player &player, Direction dir)
 
 void StartWalkAnimation(Player &player, Direction dir, bool pmWillBeCalled)
 {
-int8_t skippedFrames = -2;
-if (leveltype == DTYPE_TOWN && sgGameInitInfo.bRunInTown != 0)
-	skippedFrames = 2;
-else if (HasAnyOf(player._pIFlags, ItemSpecialEffect::FastWalk))	// upd here
-	skippedFrames = 0;
+	int8_t skippedFrames = -2;
+	if (leveltype == DTYPE_TOWN && sgGameInitInfo.bRunInTown != 0)
+		skippedFrames = 2;
+	else if (HasAnyOf(player._pIFlags, ItemSpecialEffect::FastWalk))
+		skippedFrames = 0;
+	if (pmWillBeCalled)
+		skippedFrames += 1;
+	NewPlrAnim(player, player_graphic::Walk, dir, AnimationDistributionFlags::ProcessAnimationPending, skippedFrames);
 }
 
 /**
