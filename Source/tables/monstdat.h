@@ -302,6 +302,7 @@ enum _monster_id : int16_t {
 	MT_LSUCCUBUS,
 	MT_STORMCLAW,
 	MT_GBALROG,
+	MT_MGOATMC,
 	NUM_DEFAULT_MTYPES,
 	NUM_MAX_MTYPES = 200, // same as MaxMonsters, for the sake of save game compability
 	MT_INVALID = -1,
