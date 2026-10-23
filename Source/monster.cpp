@@ -3447,11 +3447,12 @@ std::expected<void, std::string> GetLevelMTypes()
 		RETURN_IF_ERROR(AddMonsterType(MT_ADVOCATE, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_RBLACK, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_DIABLO, PLACE_SPECIAL));
-		RETURN_IF_ERROR(AddMonsterType(MT_LMAGMA, PLACE_SCATTER));	// new monster
+		RETURN_IF_ERROR(AddMonsterType(MT_LMAGMA, PLACE_SCATTER));	// new Living Magma
 		RETURN_IF_ERROR(AddMonsterType(MT_BSKEL, PLACE_UNIQUE));	// new type for U_Big Skeleton
 		RETURN_IF_ERROR(AddMonsterType(MT_LSUCCUBUS, PLACE_UNIQUE));	// new type for U_Lady Succubus
 		RETURN_IF_ERROR(AddMonsterType(MT_STORMCLAW, PLACE_UNIQUE));	// new type for U_Storm Claw
 		RETURN_IF_ERROR(AddMonsterType(MT_GBALROG, PLACE_UNIQUE));	// new type for U_Greater Demon
+		RETURN_IF_ERROR(AddMonsterType(MT_MGOATMC, PLACE_SCATTER));	// new Mad Satyr
 		return {};
 	}
 
