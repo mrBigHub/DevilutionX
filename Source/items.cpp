@@ -4789,9 +4789,8 @@ struct LazarusDrop {
 };
 
 const LazarusDrop LazarusDrops[] = {
-	{ LazarusDropKind::Normal, UITEM_INVALID, SpellID::Null, 45 },
-	{ LazarusDropKind::Unique, UITEM_THINKINGCAP, SpellID::Null, 10 },
-	{ LazarusDropKind::Unique, UITEM_NIGHTSCAPE, SpellID::Null, 15 },
+	{ LazarusDropKind::Normal, UITEM_INVALID, SpellID::Null, 60 },
+	{ LazarusDropKind::Unique, UITEM_NIGHTSCAPE, SpellID::Null, 10 },
 	{ LazarusDropKind::Book, UITEM_INVALID, SpellID::Teleport, 15 },
 	{ LazarusDropKind::Book, UITEM_INVALID, SpellID::StoneCurse, 15 },
 };
@@ -4910,13 +4909,13 @@ bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
 	if (monster.isUnique() && monster.type().type == MT_GBALROG) {
 		if (GenerateRnd(100) < SpeedBootsDropPercent)
 			return SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg);
-		return false;
+		return true;
 	}
 
 	if (monster.isUnique() && monster.type().type == MT_BSKEL) {
 		if (GenerateRnd(100) < InfravisionHelmDropPercent)
 			return SpawnForcedUnique(monster.position.tile, UITEM_INFRAVISIONHELM, sendmsg);
-		return false;
+		return true;
 	}
 
 	return false;
