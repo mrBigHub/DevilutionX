@@ -4900,6 +4900,9 @@ bool SpawnForcedUnique(Point pos, _unique_items uid, bool sendmsg)
 // ตัวตัดสินว่ามอนสเตอร์ตัวไหนดรอปพิเศษ
 bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
 {
+		SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg);
+	return true; // ชั่วคราว
+	
 	constexpr int SpeedBootsDropPercent = 100; // ปรับโอกาสดรอปได้ที่นี่
 	constexpr int InfravisionHelmDropPercent = 100;
 
