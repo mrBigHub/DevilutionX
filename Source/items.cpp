@@ -4859,34 +4859,26 @@ bool SpawnLazarusLoot(Point pos, bool sendmsg)
 	/* ...your new code from "if (ActiveItemCount >= MAXITEMS)" to "return true;" ... */
 }
 
-// ดรอปยูนีคที่กำหนดไว้ (ใช้วิธีเดียวกับ Lazarus)  [เวอร์ชันมีข้อความตรวจสอบ]
+// ดรอปยูนีคที่กำหนดไว้ (ใช้วิธีเดียวกับ Lazarus)
 bool SpawnForcedUnique(Point pos, _unique_items uid, bool sendmsg)
 {
-	if (ActiveItemCount >= MAXITEMS) {
-		InitDiabloMsg("F1: item limit");
+	if (ActiveItemCount >= MAXITEMS)
 		return false;
-	}
 
-	if (static_cast<size_t>(uid) >= UniqueItems.size()) {
-		InitDiabloMsg(std::string("F2: uid ") + std::to_string(static_cast<int>(uid)) + " rows " + std::to_string(UniqueItems.size()));
+	if (static_cast<size_t>(uid) >= UniqueItems.size())
 		return false;
-	}
 
 	size_t idx = 0;
 	while (idx < AllItemsList.size() && AllItemsList[idx].iItemId != UniqueItems[uid].UIItemId)
 		idx++;
-	if (idx >= AllItemsList.size()) {
-		InitDiabloMsg("F3: base item not found");
+	if (idx >= AllItemsList.size())
 		return false;
-	}
 
 	Item candidate = {};
 	int tries = 0;
 	do {
-		if (++tries > 10000) {
-			InitDiabloMsg(std::string("F4: no match, last uid ") + std::to_string(static_cast<int>(candidate._iUid)) + " base idx " + std::to_string(idx));
+		if (++tries > 10000)
 			return false;
-		}
 		candidate = {};
 		SetupAllItems(*MyPlayer, candidate, static_cast<_item_indexes>(idx),
 		    AdvanceRndSeed(), MonstersData[MT_ADVOCATE].level, 15,
@@ -4901,7 +4893,6 @@ bool SpawnForcedUnique(Point pos, _unique_items uid, bool sendmsg)
 
 	if (sendmsg)
 		NetSendCmdPItem(false, CMD_DROPITEM, Items[ii].position, Items[ii]);
-	InitDiabloMsg("S1: created");
 
 	return true;
 }
@@ -4909,10 +4900,6 @@ bool SpawnForcedUnique(Point pos, _unique_items uid, bool sendmsg)
 // ตัวตัดสินว่ามอนสเตอร์ตัวไหนดรอปพิเศษ
 bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
 {
-	InitDiabloMsg("S0: called");
-	SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg); // ชั่วคราว
-	return true; // ชั่วคราว
-	
 	constexpr int SpeedBootsDropPercent = 100; // ปรับโอกาสดรอปได้ที่นี่
 	constexpr int InfravisionHelmDropPercent = 100;
 
@@ -4922,13 +4909,13 @@ bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
 	if (monster.isUnique() && monster.type().type == MT_GBALROG) {
 		if (GenerateRnd(100) < SpeedBootsDropPercent)
 			return SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg);
-		return true;
+		return false;
 	}
 
 	if (monster.isUnique() && monster.type().type == MT_BSKEL) {
 		if (GenerateRnd(100) < InfravisionHelmDropPercent)
 			return SpawnForcedUnique(monster.position.tile, UITEM_INFRAVISIONHELM, sendmsg);
-		return true;
+		return false;
 	}
 
 	return false;
