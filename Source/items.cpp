@@ -4908,13 +4908,13 @@ bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
 
 	if (monster.isUnique() && monster.type().type == MT_GBALROG) {
 		if (GenerateRnd(100) < SpeedBootsDropPercent)
-			return SpawnForcedUnique(monster.position.tile, UITEM_SPIRITSHELM, sendmsg);
+			return SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg);
 		return false;
 	}
 
 	if (monster.isUnique() && monster.type().type == MT_BSKEL) {
 		if (GenerateRnd(100) < InfravisionHelmDropPercent)
-			return SpawnForcedUnique(monster.position.tile, UITEM_BRAMBLE, sendmsg);
+			return SpawnForcedUnique(monster.position.tile, UITEM_REGHA, sendmsg);
 		return false;
 	}
 
