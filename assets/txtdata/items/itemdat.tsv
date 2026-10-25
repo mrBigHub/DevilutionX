@@ -157,9 +157,9 @@ IDI_SHORT_BATTLE_BOW	2	Weapon	Two-handed	SHORT_BATTLE_BOW	Bow	SBATTLEBOW	Short B
 	1	Weapon	Two-handed	WAR_STAFF	Staff	WARSTAFF	War Staff	Staff	12	75	8	16	0	0	30	0	0		STAFF	Null	false	1500
 	1	Misc	Ring	RING	Ring	RING	Ring	Ring	5	0	0	0	0	0	0	0	0		RING	Null	false	1000
 	1	Misc	Ring	RING	Ring	RING	Ring	Ring	10	0	0	0	0	0	0	0	0		RING	Null	false	1000
-	1	Misc	Ring	RING	Ring	RING	Ring	Ring	15	0	0	0	0	0	0	0	0		RING	Null	false	1000
+	1	Misc	Ring	RING	Ring	RING3	Ring	Ring	15	0	0	0	0	0	0	0	0		RING	Null	false	1000
 	1	Misc	Amulet	AMULET	Amulet	AMULET	Amulet	Amulet	8	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
-	1	Misc	Amulet	AMULET	Amulet	AMULET	Amulet	Amulet	16	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
+	1	Misc	Amulet	AMULET	Amulet	AMULET2	Amulet	Amulet	16	0	0	0	0	0	0	0	0		AMULET	Null	false	1200
 	1	Misc	Unequippable	RUNE_OF_FIRE	Misc	NONE	Rune of Fire	Rune	1	0	0	0	0	0	0	0	0		RUNEF	Null	true	100
 	1	Misc	Unequippable	RUNE_OF_LIGHTNING	Misc	NONE	Rune of Lightning	Rune	3	0	0	0	0	0	0	13	0		RUNEL	Null	true	200
 	1	Misc	Unequippable	GREATER_RUNE_OF_FIRE	Misc	NONE	Greater Rune of Fire	Rune	7	0	0	0	0	0	0	42	0		GR_RUNEF	Null	true	400
