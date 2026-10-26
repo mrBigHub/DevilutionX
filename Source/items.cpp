@@ -4881,7 +4881,7 @@ bool SpawnForcedUnique(Point pos, _unique_items uid, bool sendmsg)
 			return false;
 		candidate = {};
 		SetupAllItems(*MyPlayer, candidate, static_cast<_item_indexes>(idx),
-		    AdvanceRndSeed(), UniqueItems[uid].UIMinLvl, 15,
+		    AdvanceRndSeed(), MonstersData[MT_ADVOCATE].level, 15,
 		    /*onlygood=*/true, /*pregen=*/false);
 	} while (candidate._iUid != uid);
 
