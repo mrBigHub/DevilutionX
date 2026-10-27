@@ -4906,21 +4906,27 @@ bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
 	if (monster.ai == MonsterAIID::Lazarus)
 		return SpawnLazarusLoot(monster.position.tile, sendmsg);
 
-	if (monster.isUnique() && monster.type().type == MT_GBALROG) {
-		if (GenerateRnd(100) < SpeedBootsDropPercent)
-			return SpawnForcedUnique(monster.position.tile, UITEM_REGHA, sendmsg);
-		return false;
-	}
-
 	if (monster.isUnique() && monster.type().type == MT_BSKEL) {
 		if (GenerateRnd(100) < InfravisionHelmDropPercent)
-			return SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg);
+			return SpawnForcedUnique(monster.position.tile, UITEM_GLADBANE, sendmsg);
 		return false;
 	}
 
 	if (monster.isUnique() && monster.type().type == MT_LSUCCUBUS) {
 		if (GenerateRnd(100) < InfravisionHelmDropPercent)
-			return SpawnForcedUnique(monster.position.tile, UITEM_WINDFORCE, sendmsg);
+			return SpawnForcedUnique(monster.position.tile, UITEM_EAGLEHORN, sendmsg);
+		return false;
+	}
+
+	if (monster.isUnique() && monster.type().type == STORMCLAW) {
+		if (GenerateRnd(100) < SpeedBootsDropPercent)
+			return SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg);
+		return false;
+	}
+
+	if (monster.isUnique() && monster.type().type == MT_GBALROG) {
+		if (GenerateRnd(100) < SpeedBootsDropPercent)
+			return SpawnForcedUnique(monster.position.tile, UITEM_GRIZZLY, sendmsg);
 		return false;
 	}
 
