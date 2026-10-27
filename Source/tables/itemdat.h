@@ -606,6 +606,7 @@ enum item_effect_type : int8_t {
 	IPL_ACUNDEAD,
 	IPL_MANATOLIFE,
 	IPL_LIFETOMANA,
+	IPL_FASTWALK,			// add new here
 	IPL_INVALID = -1,
 };
 

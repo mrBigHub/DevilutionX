@@ -407,7 +407,7 @@ std::expected<ItemSpecialEffect, std::string> ParseItemSpecialEffect(std::string
 	if (value == "Thorns") return ItemSpecialEffect::Thorns;
 	if (value == "NoMana") return ItemSpecialEffect::NoMana;
 	if (value == "HalfTrapDamage") return ItemSpecialEffect::HalfTrapDamage;
-		if (value == "FastWalk") return ItemSpecialEffect::FastWalk;	// add new here
+	if (value == "FastWalk") return ItemSpecialEffect::FastWalk;	// add new here
 	if (value == "TripleDemonDamage") return ItemSpecialEffect::TripleDemonDamage;
 	if (value == "ZeroResistance") return ItemSpecialEffect::ZeroResistance;
 	return std::unexpected("Unknown enum value");
@@ -546,6 +546,7 @@ std::expected<item_effect_type, std::string> ParseItemEffectType(std::string_vie
 	if (value == "ACUNDEAD") return IPL_ACUNDEAD;
 	if (value == "MANATOLIFE") return IPL_MANATOLIFE;
 	if (value == "LIFETOMANA") return IPL_LIFETOMANA;
+	if (value == "FASTWALK") return IPL_FASTWALK;		// add new here
 	return std::unexpected("Unknown enum value");
 }
 
