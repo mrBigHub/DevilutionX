@@ -1038,6 +1038,9 @@ int SaveItemPower(const Player &player, Item &item, ItemPower &power)
 		item._iPLHP -= portion;
 		item._iPLMana += portion;
 	} break;
+	case IPL_FASTWALK:		// add new here (1)
+		item._iFlags |= ItemSpecialEffect::FastWalk;
+		break;
 	default:
 		break;
 	}
@@ -4107,6 +4110,8 @@ bool DoOil(Player &player, int cii)
 		return _("50% Mana moved to Health");
 	case IPL_LIFETOMANA:
 		return _("40% Health moved to Mana");
+	case IPL_FASTWALK:						// add new here (2)
+		return _("fast walk");
 	default:
 		return _("Another ability (NW)");
 	}
