@@ -4918,7 +4918,7 @@ bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
 		return false;
 	}
 
-	if (monster.isUnique() && monster.type().type == STORMCLAW) {
+	if (monster.isUnique() && monster.type().type == MT_STORMCLAW) {
 		if (GenerateRnd(100) < SpeedBootsDropPercent)
 			return SpawnForcedUnique(monster.position.tile, UITEM_SPEEDBOOTS, sendmsg);
 		return false;
