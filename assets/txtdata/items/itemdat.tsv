@@ -67,7 +67,7 @@ IDI_GREYSUIT	0	Quest	Unequippable	GREY_SUIT	Misc	NONE	Grey Suit		0	0	0	0	0	0	0	0
 	1	Armor	Armor	BREAST_PLATE	HeavyArmor	BREASTPLATE	Breast Plate	Plate	16	80	0	0	20	24	40	0	0		NONE	Null	false	2800
 	1	Armor	Armor	SPLINT_MAIL	MediumArmor	NONE	Splint Mail	Mail	17	65	0	0	30	35	40	0	0		NONE	Null	false	3250
 	1	Armor	Armor	FIELD_PLATE	HeavyArmor	PLATEMAIL	Plate Mail	Plate	19	75	0	0	40	50	60	0	0		NONE	Null	false	4600
-	1	Armor	Armor	FIELD_PLATE_NEW	HeavyArmor	NONE	Field Plate	Plate	21	80	0	0	51	55	65	0	0		NONE	Null	false	5800
+	1	Armor	Armor	FIELD_PLATE_NEW	HeavyArmor	FPLATEMAIL	Field Plate	Plate	21	80	0	0	51	55	65	0	0		NONE	Null	false	5800
 	1	Armor	Armor	GOTHIC_PLATE	HeavyArmor	GothicPlate	Gothic Plate	Plate	23	100	0	0	56	65	80	0	0		NONE	Null	false	8000
 	1	Armor	Armor	FULL_PLATE_MAIL	HeavyArmor	FULLPLATE	Full Plate Mail	Plate	25	90	0	0	66	75	90	0	0		NONE	Null	false	6500
 	1	Armor	One-handed	BUCKLER	Shield	BUCKLER	Buckler	Shield	1	16	0	0	1	5	0	0	0		NONE	Null	false	30
