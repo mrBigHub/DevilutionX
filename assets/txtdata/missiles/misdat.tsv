@@ -69,7 +69,7 @@ DiabloApocalypseBoom	AddApocalypseBoom	ProcessApocalypseBoom			DiabloApocalypseB
 DiabloApocalypse	AddDiabloApocalypse					Physical,Invisible	
 BloodStarCrimson	AddGenericMagicMissile	ProcessGenericProjectile			BloodStarCrimson	Physical	Blockable
 BloodStarCrimsonExplosion	AddMissileExplosion	ProcessMissileExplosion			BloodStarCrimsonExplosion	Physical	
-ApocBoomFire	AddApocalypseBoom	ProcessApocalypseBoom			DiabloApocalypseBoom	Fire	
-ApocBoomPhysical	AddApocalypseBoom	ProcessApocalypseBoom			ApocalypseBoom	Physical	
+ApocBoomFire	AddApocalypseBoom	ProcessApocalypseBoom			ApocalypseBoom	Fire	
+ApocBoomPhysical	AddApocalypseBoom	ProcessApocalypseBoom			DiabloApocalypseBoom	Physical	
 ApocBoomLightning	AddApocalypseBoom	ProcessApocalypseBoom			ApocBoomLightning	Lightning	
 ApocBoomMagic	AddApocalypseBoom	ProcessApocalypseBoom			ApocBoomMagic	Magic	
