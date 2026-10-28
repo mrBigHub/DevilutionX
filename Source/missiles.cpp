@@ -2815,7 +2815,7 @@ void AddDiabloApocalypse(Missile &missile, AddMissileParameter & /*parameter*/)
 if (missile._micaster != TARGET_MONSTERS && missile._misource >= 0) {
     const auto casterType = Monsters[missile._misource].type().type;
     if (casterType == MT_STORMCLAW) {
-        const MissileID boomTypes[] = { MissileID::ApocBoomFire, MissileID::ApocBoomPhysical };
+        const MissileID boomTypes[] = { MissileID::ApocalypseBoom, MissileID::DiabloApocalypseBoom };
         boomType = boomTypes[GenerateRnd(2)];
     } else if (casterType == MT_GBALROG) {
         const MissileID boomTypes[] = { MissileID::ApocBoomFire, MissileID::ApocBoomPhysical };
