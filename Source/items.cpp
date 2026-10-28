@@ -4913,7 +4913,7 @@ bool SpawnSpecialMonsterLoot(const Monster &monster, bool sendmsg)
 
 	if (monster.isUnique() && monster.type().type == MT_BSKEL) {
 		if (GenerateRnd(100) < InfravisionHelmDropPercent)
-			return SpawnForcedUnique(monster.position.tile, UITEM_GLADBANE, sendmsg);
+			return SpawnForcedUnique(monster.position.tile, UITEM_NAJPLATE, sendmsg);
 		return false;
 	}
 
