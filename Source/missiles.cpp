@@ -2812,14 +2812,15 @@ void AddRedPortal(Missile &missile, AddMissileParameter & /*parameter*/)
 void AddDiabloApocalypse(Missile &missile, AddMissileParameter & /*parameter*/)
 {
 	MissileID boomType = MissileID::DiabloApocalypseBoom;
-	if (missile._micaster != TARGET_MONSTERS && missile._misource >= 0) { 
-	const auto casterType = Monsters[missile._misource].type().type; 
-	if (casterType == MT_STORMCLAW) { const MissileID boomTypes[] = { MissileID::ApocBoomFire }; 
-	boomType = boomTypes[GenerateRnd(4)];
-} else if (casterType == MT_GBALROG) { 
-	const MissileID boomTypes[] = { MissileID::ApocBoomFire, MissileID::ApocBoomPhysical };
-	boomType = boomTypes[GenerateRnd(2)];
-	}
+if (missile._micaster != TARGET_MONSTERS && missile._misource >= 0) {
+    const auto casterType = Monsters[missile._misource].type().type;
+    if (casterType == MT_STORMCLAW) {
+        const MissileID boomTypes[] = { MissileID::ApocBoomFire, MissileID::ApocBoomPhysical };
+        boomType = boomTypes[GenerateRnd(2)];
+    } else if (casterType == MT_GBALROG) {
+        const MissileID boomTypes[] = { MissileID::ApocBoomFire, MissileID::ApocBoomPhysical };
+        boomType = boomTypes[GenerateRnd(2)];
+    }
 }
 	for (const Player &player : Players) {
 		if (!player.plractive)
