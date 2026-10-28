@@ -2030,8 +2030,8 @@ void AiRangedAvoidance(Monster &monster)
 	const int dam = (monster.ai == MonsterAIID::Diablo) ? 40 : 0;
 	MissileID missileType = GetMissileType(monster); // update here
 	if (monster.type().type == MT_STORMCLAW) {
-		constexpr MissileID spells[] = { MissileID::ApocBoomFire, MissileID::ApocBoomPhysical, MissileID::ApocBoomLightning, MissileID::ApocBoomMagic };
-		missileType = spells[GenerateRnd(4)];
+		constexpr MissileID spells[] = { MissileID::ApocBoomFire, MissileID::ApocBoomLightning };
+		missileType = spells[GenerateRnd(2)];
 	}
 	int v = GenerateRnd(10000);
 	const unsigned distanceToEnemy = monster.distanceToEnemy();
