@@ -3637,11 +3637,11 @@ std::expected<void, std::string> InitMonsterGFX(CMonster &monsterType, MonsterSp
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimsonExplosion).LoadGFX());
 	}
 	if (mtype == MT_STORMCLAW) {
-//		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocalypseBoom).LoadGFX());
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomPhysical).LoadGFX());
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomLightning).LoadGFX());
+//		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocalypseBoom).LoadGFX());
 //		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomMagic).LoadGFX());
-//	}
+	}
 
 	return {};
 }
