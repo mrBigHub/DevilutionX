@@ -2030,7 +2030,7 @@ void AiRangedAvoidance(Monster &monster)
 	const int dam = (monster.ai == MonsterAIID::Diablo) ? 40 : 0;
 	MissileID missileType = GetMissileType(monster); // update here
 	if (monster.type().type == MT_STORMCLAW) {
-		constexpr MissileID spells[] = { MissileID::ApocBoomFire, MissileID::ApocBoomPhysical };
+		constexpr MissileID spells[] = { MissileID::ApocBoomLightning, MissileID::ApocBoomPhysical };
 		missileType = spells[GenerateRnd(2)];
 	}
 	int v = GenerateRnd(10000);
@@ -3636,10 +3636,10 @@ std::expected<void, std::string> InitMonsterGFX(CMonster &monsterType, MonsterSp
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimson).LoadGFX());
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::BloodStarCrimsonExplosion).LoadGFX());
 	}
-//		if (mtype == MT_STORMCLAW) {
+	if (mtype == MT_STORMCLAW) {
 //		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocalypseBoom).LoadGFX());
-//		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomPhysical).LoadGFX());
-//		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomLightning).LoadGFX());
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomPhysical).LoadGFX());
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomLightning).LoadGFX());
 //		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomMagic).LoadGFX());
 //	}
 
