@@ -3636,6 +3636,41 @@ void ProcessChainLightning(Missile &missile)
 		missile._miDelFlag = true;
 }
 
+void AddLadyStarControl(Missile &missile, AddMissileParameter &parameter)	// add new here
+{
+	missile.var1 = parameter.dst.x;
+	missile.var2 = parameter.dst.y;
+	missile.duration = 1;
+}
+
+void ProcessLadyStarControl(Missile &missile)
+{
+	const int id = missile._misource;
+	const Point position = missile.position.tile;
+	const int rad = 10; // ระยะยิงของ Lady ประมาณ 9 ช่อง
+
+	Crawl(1, rad, [&](Displacement displacement) {
+		const Point target = position + displacement;
+		if (!InDungeonBounds(target))
+			return false;
+
+		bool isTarget = dPlayer[target.x][target.y] > 0;
+		if (!isTarget && dMonster[target.x][target.y] > 0)
+			isTarget = Monsters[dMonster[target.x][target.y] - 1].isPlayerMinion(); // Golem ของผู้เล่น
+
+		if (isTarget) {
+			const Direction dir = GetDirection(position, target);
+			AddMissile(position, target, dir, MissileID::BloodStarCrimson,
+			    TARGET_PLAYERS, id, missile._midam, missile._mispllvl);
+		}
+		return false;
+	});
+
+	missile.duration--;
+	if (missile.duration == 0)
+		missile._miDelFlag = true;
+}
+
 void ProcessWeaponExplosion(Missile &missile)
 {
 	constexpr int ExpLight[10] = { 9, 10, 11, 12, 11, 10, 8, 6, 4, 2 };

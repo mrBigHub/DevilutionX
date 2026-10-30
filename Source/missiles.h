@@ -355,6 +355,7 @@ void AddGuardian(Missile &missile, AddMissileParameter &parameter);
  * var2: Y coordinate of the destination
  */
 void AddChainLightning(Missile &missile, AddMissileParameter &parameter);
+void AddLadyStarControl(Missile &missile, AddMissileParameter &parameter);	// add new here
 void AddRhino(Missile &missile, AddMissileParameter &parameter);
 
 /**
@@ -465,6 +466,7 @@ void ProcessFlashTop(Missile &missile);
 void ProcessFlameWave(Missile &missile);
 void ProcessGuardian(Missile &missile);
 void ProcessChainLightning(Missile &missile);
+void ProcessLadyStarControl(Missile &missile);	// add new here
 void ProcessWeaponExplosion(Missile &missile);
 void ProcessMissileExplosion(Missile &missile);
 void ProcessAcidSplate(Missile &missile);
