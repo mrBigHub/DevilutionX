@@ -230,6 +230,7 @@ std::expected<MissileData::AddFn, std::string> ParseMissileAddFn(std::string_vie
 	if (value == "AddFlameWave") return AddFlameWave;
 	if (value == "AddGuardian") return AddGuardian;
 	if (value == "AddChainLightning") return AddChainLightning;
+	if (value == "AddLadyStarControl") return AddLadyStarControl;	// add new here
 	if (value == "AddRhino") return AddRhino;
 	if (value == "AddGenericMagicMissile") return AddGenericMagicMissile;
 	if (value == "AddAcid") return AddAcid;
@@ -291,6 +292,7 @@ std::expected<MissileData::ProcessFn, std::string> ParseMissileProcessFn(std::st
 	if (value == "ProcessFlameWave") return ProcessFlameWave;
 	if (value == "ProcessGuardian") return ProcessGuardian;
 	if (value == "ProcessChainLightning") return ProcessChainLightning;
+	if (value == "ProcessLadyStarControl") return ProcessLadyStarControl;
 	if (value == "ProcessWeaponExplosion") return ProcessWeaponExplosion;
 	if (value == "ProcessMissileExplosion") return ProcessMissileExplosion;
 	if (value == "ProcessAcidSplate") return ProcessAcidSplate;
