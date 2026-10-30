@@ -2030,8 +2030,8 @@ void AiRangedAvoidance(Monster &monster)
 	const int dam = (monster.ai == MonsterAIID::Diablo) ? 40 : 0;
 	MissileID missileType = GetMissileType(monster); // update here
 	if (monster.type().type == MT_STORMCLAW) {
-		constexpr MissileID spells[] = { MissileID::ApocBoomLightning, MissileID::ApocBoomPhysical };
-		missileType = spells[GenerateRnd(2)];
+		constexpr MissileID spells[] = { MissileID::ApocBoomLightning, MissileID::ApocBoomPhysical, MissileID::ApocBoomMagic };
+		missileType = spells[GenerateRnd(3)];
 	}
 	int v = GenerateRnd(10000);
 	const unsigned distanceToEnemy = monster.distanceToEnemy();
@@ -3640,7 +3640,7 @@ std::expected<void, std::string> InitMonsterGFX(CMonster &monsterType, MonsterSp
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomPhysical).LoadGFX());
 		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomLightning).LoadGFX());
 //		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocalypseBoom).LoadGFX());
-//		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomMagic).LoadGFX());
+		RETURN_IF_ERROR(GetMissileSpriteData(MissileGraphicID::ApocBoomMagic).LoadGFX());
 	}
 
 	return {};
