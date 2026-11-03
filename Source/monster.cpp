@@ -2027,12 +2027,10 @@ void AiRangedAvoidance(Monster &monster)
 	if (IsAnyOf(monster.ai, MonsterAIID::Magma, MonsterAIID::Storm, MonsterAIID::BoneDemon) && monster.activeForTicks < UINT8_MAX)
 		MonstCheckDoors(monster);
 	const int lessmissiles = (monster.ai == MonsterAIID::Acid) ? 1 : 0;
-	const int dam = (monster.ai == MonsterAIID::Diablo) ? 40 : 0;
+	const int dam = (monster.ai == MonsterAIID::Diablo || monster.type().type == MT_STORMCLAW) ? 40 : 0;
 	MissileID missileType = GetMissileType(monster); // update here
-	if (monster.type().type == MT_STORMCLAW) {
-		constexpr MissileID spells[] = { MissileID::ApocBoomLightning, MissileID::ApocBoomPhysical, MissileID::ApocBoomMagic };
-		missileType = spells[GenerateRnd(3)];
-	}
+if (monster.type().type == MT_STORMCLAW)
+	missileType = MissileID::Apoc4eControl;
 	int v = GenerateRnd(10000);
 	const unsigned distanceToEnemy = monster.distanceToEnemy();
 	if (distanceToEnemy >= 2 && monster.activeForTicks == UINT8_MAX && dTransVal[monster.position.tile.x][monster.position.tile.y] == dTransVal[monster.enemyPosition.x][monster.enemyPosition.y]) {

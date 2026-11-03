@@ -3671,6 +3671,38 @@ void ProcessLadyStarControl(Missile &missile)
 		missile._miDelFlag = true;
 }
 
+void ProcessApoc4eControl(Missile &missile)	// add new here
+{
+	const int id = missile._misource;
+	const Point position = missile.position.tile;
+	const int rad = 12;
+	constexpr MissileID boomTypes[] = {
+		MissileID::ApocBoomFire, MissileID::ApocBoomLightning,
+		MissileID::ApocBoomPhysical, MissileID::ApocBoomMagic
+	};
+
+	Crawl(1, rad, [&](Displacement displacement) {
+		const Point target = position + displacement;
+		if (!InDungeonBounds(target))
+			return false;
+
+		bool isTarget = dPlayer[target.x][target.y] > 0;
+		if (!isTarget && dMonster[target.x][target.y] != 0)
+			isTarget = Monsters[abs(dMonster[target.x][target.y]) - 1].isPlayerMinion();
+
+		if (isTarget) {
+			const MissileID boomType = boomTypes[GenerateRnd(4)];
+			AddMissile(target, target, Direction::South, boomType,
+			    TARGET_PLAYERS, id, missile._midam, 0);
+		}
+		return false;
+	});
+
+	missile.duration--;
+	if (missile.duration == 0)
+		missile._miDelFlag = true;
+}
+
 void ProcessWeaponExplosion(Missile &missile)
 {
 	constexpr int ExpLight[10] = { 9, 10, 11, 12, 11, 10, 8, 6, 4, 2 };

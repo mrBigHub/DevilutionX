@@ -467,6 +467,7 @@ void ProcessFlameWave(Missile &missile);
 void ProcessGuardian(Missile &missile);
 void ProcessChainLightning(Missile &missile);
 void ProcessLadyStarControl(Missile &missile);	// add new here
+void ProcessApoc4eControl(Missile &missile);
 void ProcessWeaponExplosion(Missile &missile);
 void ProcessMissileExplosion(Missile &missile);
 void ProcessAcidSplate(Missile &missile);
