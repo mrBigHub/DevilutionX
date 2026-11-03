@@ -172,7 +172,8 @@ enum class MissileID : int8_t {
 	ApocBoomLightning,
 	ApocBoomMagic,
 	LadyStarControl,	// add new here
-	LastDiablo = LadyStarControl,
+	Apoc4eControl,
+	LastDiablo = Apoc4eControl,
 	Mana,
 	Magi,
 	LightningWall,
