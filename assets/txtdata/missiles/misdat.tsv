@@ -74,3 +74,4 @@ ApocBoomPhysical	AddApocalypseBoom	ProcessApocalypseBoom			ApocBoomPhysical	Phys
 ApocBoomLightning	AddApocalypseBoom	ProcessApocalypseBoom			ApocBoomLightning	Lightning	
 ApocBoomMagic	AddApocalypseBoom	ProcessApocalypseBoom			ApocBoomMagic	Magic	
 LadyStarControl	AddLadyStarControl	ProcessLadyStarControl				Physical,Invisible	
+Apoc4eControl	AddChainLightning 	ProcessApoc4eControl				Physical,Invisible	
