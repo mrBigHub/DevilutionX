@@ -293,7 +293,7 @@ std::expected<MissileData::ProcessFn, std::string> ParseMissileProcessFn(std::st
 	if (value == "ProcessGuardian") return ProcessGuardian;
 	if (value == "ProcessChainLightning") return ProcessChainLightning;
 	if (value == "ProcessLadyStarControl") return ProcessLadyStarControl;	// add new here
-	if (value == "ProcessApoc4eControl") return ProcessStormApocControl;
+	if (value == "ProcessApoc4eControl") return ProcessApoc4eControl;
 	if (value == "ProcessWeaponExplosion") return ProcessWeaponExplosion;
 	if (value == "ProcessMissileExplosion") return ProcessMissileExplosion;
 	if (value == "ProcessAcidSplate") return ProcessAcidSplate;
