@@ -3688,7 +3688,7 @@ void ProcessApoc4eControl(Missile &missile)	// add new here
 
 		bool isTarget = dPlayer[target.x][target.y] > 0;
 		if (!isTarget && dMonster[target.x][target.y] != 0)
-			isTarget = Monsters[abs(dMonster[target.x][target.y]) - 1].isPlayerMinion();
+			isTarget = Monsters[std::abs(dMonster[target.x][target.y]) - 1].isPlayerMinion();
 
 		if (isTarget) {
 			const MissileID boomType = boomTypes[GenerateRnd(4)];
