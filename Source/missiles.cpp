@@ -2818,7 +2818,7 @@ if (missile._micaster != TARGET_MONSTERS && missile._misource >= 0) {
         const MissileID boomTypes[] = { MissileID::Apoc4eControl, MissileID::LadyStarControl };
         boomType = boomTypes[GenerateRnd(2)];
     } else if (casterType == MT_GBALROG) {
-        const MissileID boomTypes[] = { MissileID::DiabloApocalypseBoom, MissileID::ApocalypseBoom };
+        const MissileID boomTypes[] = { MissileID::LightningControl, MissileID::ApocalypseBoom };
         boomType = boomTypes[GenerateRnd(2)];
     }
 }
