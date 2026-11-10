@@ -1976,7 +1976,7 @@ MissileID GetMissileType(MonsterAIID ai)
 MissileID GetMissileType(const Monster &monster)
 {
 	if (monster.type().type == MT_LSUCCUBUS)
-		return MissileID::LadyStarControl;
+		return MissileID::BloodStarCrimson;
 	return GetMissileType(monster.ai);
 }
 	
