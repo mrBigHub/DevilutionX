@@ -1976,7 +1976,7 @@ MissileID GetMissileType(MonsterAIID ai)
 MissileID GetMissileType(const Monster &monster)
 {
 	if (monster.type().type == MT_LSUCCUBUS)
-		return MissileID::BloodStarCrimson;
+		return MissileID::LadyStarControl;
 	return GetMissileType(monster.ai);
 }
 	
@@ -3445,7 +3445,7 @@ std::expected<void, std::string> GetLevelMTypes()
 		RETURN_IF_ERROR(AddMonsterType(MT_ADVOCATE, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_RBLACK, PLACE_SCATTER));
 		RETURN_IF_ERROR(AddMonsterType(MT_DIABLO, PLACE_SPECIAL));
-		RETURN_IF_ERROR(AddMonsterType(MT_LMAGMA, PLACE_SCATTER));	// new Living Magma
+//		RETURN_IF_ERROR(AddMonsterType(MT_LMAGMA, PLACE_SCATTER));	// new Living Magma
 		RETURN_IF_ERROR(AddMonsterType(MT_BSKEL, PLACE_UNIQUE));	// new type for U_Big Skeleton
 		RETURN_IF_ERROR(AddMonsterType(MT_LSUCCUBUS, PLACE_UNIQUE));	// new type for U_Lady Succubus
 		RETURN_IF_ERROR(AddMonsterType(MT_STORMCLAW, PLACE_UNIQUE));	// new type for U_Storm Claw
