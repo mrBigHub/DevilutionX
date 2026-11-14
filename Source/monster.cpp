@@ -4838,8 +4838,9 @@ void SpawnGolem(const Player &player, Point position, uint8_t spellLevel)
 	// 1. Prefer MonsterIndex = PlayerIndex for vanilla compatibility
 	if (player.getId() < ReservedMonsterSlotsForGolems) {
 		Monster &reservedGolem = Monsters[player.getId()];
-		if (reservedGolem.position.tile == GolemHoldingCell || reservedGolem.hitPoints == 0)
+		if (reservedGolem.position.tile == GolemHoldingCell || reservedGolem.hitPoints == 0) {
 			golem = &reservedGolem;
+		}
 	}
 	// 2. Use reserved slots, so additional Monsters can spawn
 	if (golem == nullptr) {
@@ -4853,18 +4854,24 @@ void SpawnGolem(const Player &player, Point position, uint8_t spellLevel)
 	}
 	// 3. Use normal monster slot
 	if (golem == nullptr) {
-		if (ActiveMonsterCount >= MaxMonsters)
+		if (ActiveMonsterCount >= MaxMonsters) {
+			InitDiabloMsg("G-D max monsters");
 			return;
+		}
 		const size_t monsterIndex = ActiveMonsters[ActiveMonsterCount];
 		ActiveMonsterCount += 1;
 		golem = &Monsters[monsterIndex];
 	}
 
-	if (golem == nullptr)
+	if (golem == nullptr) {
+		InitDiabloMsg("G-E no slot");
 		return;
+	}
 
 	const size_t monsterIndex = golem->getId();
 	const uint32_t seed = GetLCGEngineState();
+
+	InitDiabloMsg("OK count " + std::to_string(ActiveMonsterCount));
 
 	// Update local state immediately to increase ActiveMonsterCount instantly (this allows multiple monsters to be spawned in one game tick)
 	InitializeSpawnedMonster(position, Direction::South, 0, monsterIndex, seed, player.getId(), spellLevel);

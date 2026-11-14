@@ -2436,6 +2436,7 @@ void AddStoneCurse(Missile &missile, AddMissileParameter &parameter)
 
 void AddGolem(Missile &missile, AddMissileParameter &parameter)
 {
+	InitDiabloMsg("G-0 AddGolem reached");
 	missile._miDelFlag = true;
 
 	const int playerId = missile._misource;
@@ -2444,6 +2445,7 @@ void AddGolem(Missile &missile, AddMissileParameter &parameter)
 
 	// Is Golem alive?
 	if (golem != nullptr) {
+		InitDiabloMsg("G-A kill existing");
 		KillGolem(*golem);
 		return;
 	}
@@ -2454,8 +2456,10 @@ void AddGolem(Missile &missile, AddMissileParameter &parameter)
 	    },
 	    parameter.dst, 0, 5);
 
-	if (!spawnPosition)
+	if (!spawnPosition) {
+		InitDiabloMsg("G-B no position");
 		return;
+	}
 
 	if (&player != MyPlayer)
 		return;
@@ -2464,6 +2468,7 @@ void AddGolem(Missile &missile, AddMissileParameter &parameter)
 
 	// The command is only executed for the level owner, to prevent desyncs in multiplayer.
 	if (!MyPlayer->isLevelOwnedByLocalClient()) {
+		InitDiabloMsg("G-C ask owner");
 		// If we are not the level owner, request the level owner to spawn the golem for us
 		NetSendCmdLocParam1(true, CMD_REQUESTSPAWNGOLEM, *spawnPosition, spellLevel);
 		return;
